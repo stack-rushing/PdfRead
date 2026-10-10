@@ -7,6 +7,7 @@ import com.novelreader.pdf.data.local.entity.ChapterEntity
 import com.novelreader.pdf.data.local.entity.SettingEntity
 import com.novelreader.pdf.data.model.BookRef
 import com.novelreader.pdf.data.model.BookSummary
+import com.novelreader.pdf.data.model.NaturalOrder
 import com.novelreader.pdf.data.model.Chapter
 import com.novelreader.pdf.data.model.ChapterKind
 import com.novelreader.pdf.data.model.ReadingProgress
@@ -39,8 +40,22 @@ class LibraryRepository(
 
     // ------------------------------------------------------------------ 书架
 
+    /**
+     * 书架列表：在内存里做**自然排序**（`2-2` 在 `2-10` 前面）。
+     *
+     * SQL 层排不出来（`ORDER BY` 是逐字节比较），而自定义 collation 或加排序列都要动数据库结构；
+     * 书架只有几十本，直接排的开销可以忽略，所以不值得为它加一个迁移。
+     * 书名相同（同一本书的两个副本）时按加入时间，保证顺序稳定不跳。
+     */
+    private val shelfOrder = Comparator<BookSummary> { a, b ->
+        NaturalOrder.compare(a.title, b.title).takeIf { it != 0 }
+            ?: a.addedAt.compareTo(b.addedAt)
+    }
+
     fun observeShelf(): Flow<List<BookSummary>> =
-        bookDao.observeShelf().map { list -> list.map(BookEntity::toSummary) }
+        bookDao.observeShelf().map { list ->
+            list.map(BookEntity::toSummary).sortedWith(shelfOrder)
+        }
 
     fun observeBook(bookId: String): Flow<BookSummary?> =
         bookDao.observe(bookId).map { it?.toSummary() }
