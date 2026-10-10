@@ -3,6 +3,7 @@ package com.novelreader.pdf.data.toc
 import com.novelreader.pdf.data.model.ChapterKind
 import com.novelreader.pdf.data.model.ChapterResolver
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -64,7 +65,8 @@ class OcrChapterBuilderTest {
         val chapters = replay()
         chapters.forEach { println("  P${it.startPage + 1} ${it.kind} ${it.title} / ${it.titleEn}") }
 
-        assertEquals("条目总数", 19, chapters.size)
+        // 21 = 5 前置 + 11 章 + 5 后置（读后活动/学习指导/生词/阅读练习/参考译文）
+        assertEquals("条目总数", 21, chapters.size)
 
         // ---- 11 个正文章节：页码全部正确 ----
         val body = chapters.filter { it.kind == ChapterKind.CHAPTER }
@@ -99,6 +101,12 @@ class OcrChapterBuilderTest {
         assertEquals("学习指导", byPage[60]?.title)
         assertEquals("参考译文", byPage[69]?.title)
         assertEquals("TransIation 也要规范成 Translation", "Translation", byPage[69]?.titleEn)
+
+        // ---- 书末的「生词 / 阅读练习」要能单独成条，而不是被并进《学习指导》----
+        assertEquals("生词表", "生词", byPage[65]?.title)
+        assertEquals("New words", byPage[65]?.titleEn)
+        assertEquals("阅读练习", byPage[67]?.title)
+        assertEquals("Reading exercise", byPage[67]?.titleEn)
 
         // ---- 关键回归 1：附文开始后不得再冒出新章节 ----
         assertTrue(
@@ -243,5 +251,67 @@ class OcrChapterBuilderTest {
         assertEquals(true, HeadingDetector.isTerminalBack(HeadingDetector.sectionHit("Learning guide")!!))
         assertEquals(false, HeadingDetector.isTerminalBack(HeadingDetector.sectionHit("After reading")!!))
         assertEquals(false, HeadingDetector.isTerminalBack(HeadingDetector.sectionHit("ACTIVITIES PAGES 6 一 14")!!))
+    }
+
+    // ==================================================================================
+    //  多本装订成一本的合集（最棘手的一类：没有书签，只能靠版面标记切分）
+    // ==================================================================================
+
+    @Test
+    fun `多本合集要按作者简介切分并让章节号重新从 1 开始`() {
+        // 剑桥《赃款》实际是一个 368 页的装订本，内含 5 本小说；
+        // 夹具取前 81 页：第一本全部章节 + 第二本的开头。
+        val chapters = replayFixture("cambridge_dirtymoney_strips.tsv", 368)
+        chapters.forEach { println("  P${it.startPage + 1} ${it.kind} ${it.title}") }
+
+        // ---- 两个分组：第二本的开头是「作者简介」 ----
+        val groups = chapters.filter { it.kind == ChapterKind.GROUP }
+        assertEquals("应切出 2 个分组", 2, groups.size)
+        // 分组的区间由**子条目**推出（ChapterResolver.resolveRanges 的既有设计，
+        // 书虫那本的分组也是这么算的），所以起点是第一个子条目（第 13 页的"人物"），
+        // 而不是分组自己所在的第 10 页（作者简介）。
+        assertEquals(12, groups[0].startPage)
+        assertTrue("第一本尽力从扉页读出书名，实为 ${groups[0].title}", groups[0].title.contains("Dirty"))
+        assertEquals(66, groups[1].startPage)
+
+        // ---- 第一本：10 章，页码与印刷目录一致 ----
+        val first = chapters.filter { it.kind == ChapterKind.CHAPTER && it.startPage < 61 }
+        assertEquals(10, first.size)
+        assertEquals(listOf(15, 20, 22, 25, 28, 30, 32, 35, 37, 40), first.map { it.startPage })
+        first.forEachIndexed { i, c ->
+            assertTrue("第一本第 ${i + 1} 章编号错：${c.title}", c.title.startsWith("Chapter ${i + 1} "))
+        }
+        // 这一页的页眉 OCR 把 "Chapter" 整个漏掉了，只剩 "5 ln the ho spital"，
+        // 靠"整页只有一行 → 就是章节名"的规则救回来；不救的话后面每一章都会错位
+        assertEquals(28, chapters.first { it.title.contains("ho spital") }.startPage)
+
+        // ---- 关键：第一本的《参考译文》不能把后面的书封口 ----
+        assertTrue(
+            "第一本的后置附文之后必须还能继续收章节",
+            chapters.any { it.kind == ChapterKind.CHAPTER && it.startPage > 61 },
+        )
+        // ---- 关键：第二本的编号要重新从 1 开始（不是接着 11 往下数）----
+        val second = chapters.filter { it.kind == ChapterKind.CHAPTER && it.startPage > 61 }
+        assertTrue("第二本应有章节", second.isNotEmpty())
+        assertEquals(67, second.first().startPage)
+        assertEquals("Chapter 1 A photo", second.first().title)
+        assertEquals("Chapter 2 Help", second[1].title)
+
+        // ---- 书末的「生词 / 阅读练习」是附文，不是章节（这两页在夹具范围之外，
+        //      只断言第一本的后置附文齐了、且章节在它之后能继续收）----
+        assertTrue("第一本的《参考译文》应作为附文存在", chapters.any { it.title == "参考译文" })
+        assertTrue("第一本的后置附文不该混进章节列表", first.none { it.startPage > 41 && it.startPage < 61 })
+    }
+
+    @Test
+    fun `作者简介只认整行相等，封底推荐语里的字样不算`() {
+        assertTrue(HeadingDetector.isBookStart("作 者 简 介"))
+        assertTrue(HeadingDetector.isBookStart("故事导读"))
+        // 现有夹具里封底推荐语就含"作者简介"字样，用"包含"判定会误切成新书
+        assertFalse(
+            HeadingDetector.isBookStart(
+                "· 剑桥原版引进，国际获奖图书 · 当代原创短篇小说 · 作者简介与故事导读 · 重点中学教师推荐",
+            ),
+        )
     }
 }

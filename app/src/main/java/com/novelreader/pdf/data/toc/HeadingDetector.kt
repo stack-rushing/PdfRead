@@ -52,6 +52,11 @@ object HeadingDetector {
         "activities" to "活动",
         "appendix" to "附录",
         "words & expressions" to "词汇与表达",
+        // 书末的生词表与阅读练习：它们的页眉是「7 New words 生词」这种"带编号的小节"，
+        // 不显式列出的话会被当成章节（实测多本合集里冒出了 Chapter 7 New words）
+        "new words" to "生词",
+        "reading exercise" to "阅读练习",
+        "reading exercises" to "阅读练习",
     )
 
     /**
@@ -163,6 +168,21 @@ object HeadingDetector {
             }
         }
         return null
+    }
+
+    /**
+     * 这一行是不是「新的一本书开始」的版面标记。
+     *
+     * 用途：**多本合集的切分依据**。实测（剑桥《赃款》368 页，内含 5 本小说）每本书开头
+     * 都是同一套标记：`作者简介` → `故事导读` → `Contents 目录` → `人物` → `地点` → `读前思考` → `Chapter 1`。
+     *
+     * 判定必须**整行恰好等于**这些词，不能用"包含"：封底的推荐语里就出现过
+     * 「…作者简介…」这种字样，用包含会把它误判成新书（现有夹具里就有这种行）。
+     */
+    fun isBookStart(line: String): Boolean {
+        val zh = cjkOf(line)
+        return zh == "作者简介" || zh == "故事导读" ||
+            zh == "作者簡介" || zh == "故事導讀"
     }
 
     /** 粗判：这一行像不像标题（供不关心类型的调用点使用） */
