@@ -2,12 +2,15 @@ package com.novelreader.pdf.data.repository
 
 import android.content.Context
 import android.net.Uri
+import android.provider.OpenableColumns
 import com.novelreader.pdf.data.model.BookRef
+import com.novelreader.pdf.data.model.BookSummary
 import com.novelreader.pdf.data.model.Chapter
 import com.novelreader.pdf.data.model.ChapterResolver
 import com.novelreader.pdf.data.model.ChapterConfig
 import com.novelreader.pdf.data.model.TocSource
 import com.novelreader.pdf.data.pdf.PdfOutlineParser
+import com.novelreader.pdf.data.pdf.PdfRasterSession
 import com.novelreader.pdf.data.toc.TocGenerator
 import com.novelreader.pdf.data.toc.TocMode
 import com.novelreader.pdf.data.toc.TocProgress
@@ -121,63 +124,7 @@ class TocRepository(
                     setTask(book.bookId, TocTaskState(running = true, phase = phase, done = done, total = total))
                 }
 
-                var chapters: List<Chapter> = emptyList()
-                var source = TocSource.NONE
-
-                when (mode) {
-                    TocMode.OUTLINE_ONLY -> {
-                        val outline = readOutline(book, totalPages)
-                        if (outline != null) {
-                            chapters = outline.chapters
-                            source = TocSource.PDF_OUTLINE
-                        }
-                    }
-
-                    TocMode.OCR_REANCHOR -> {
-                        val base = library.loadChapters(book.bookId)
-                            .ifEmpty { readOutline(book, totalPages)?.chapters.orEmpty() }
-                        if (base.isEmpty()) {
-                            setTask(book.bookId, TocTaskState(false, "没有可重锚定的章节，请改用全页眉扫描"))
-                            return@launch
-                        }
-                        chapters = generator.reanchorByOcr(file, base, totalPages, progress)
-                        source = TocSource.OCR
-                    }
-
-                    TocMode.OCR_SCAN -> {
-                        chapters = generator.scanByOcr(file, totalPages, progress)
-                        source = TocSource.OCR
-                    }
-
-                    TocMode.AUTO -> {
-                        // 1) 人工校正过的 JSON 永远第一优先
-                        parseConfigFile(findLocalOverride(book.bookId), totalPages)?.let {
-                            chapters = it
-                            source = TocSource.LOCAL_JSON
-                        }
-                        // 2) 内置书签：页码可信就直接用
-                        if (chapters.isEmpty()) {
-                            val outline = readOutline(book, totalPages)
-                            when {
-                                outline == null -> Unit
-                                !outline.unreliable -> {
-                                    chapters = outline.chapters
-                                    source = TocSource.PDF_OUTLINE
-                                }
-                                // 3) 页码漂移 → OCR 重锚定
-                                else -> {
-                                    chapters = generator.reanchorByOcr(file, outline.chapters, totalPages, progress)
-                                    source = TocSource.OCR
-                                }
-                            }
-                        }
-                        // 4) 连书签都没有（扫描件）→ 全页眉扫描
-                        if (chapters.isEmpty()) {
-                            chapters = generator.scanByOcr(file, totalPages, progress)
-                            source = TocSource.OCR
-                        }
-                    }
-                }
+                val (chapters, source) = computeChapters(book, file, totalPages, mode, progress)
 
                 if (chapters.isEmpty()) {
                     setTask(book.bookId, TocTaskState(false, "没能识别出章节"))
@@ -192,6 +139,105 @@ class TocRepository(
                 setTask(book.bookId, TocTaskState(false, "失败：${t.message ?: t.javaClass.simpleName}"))
             }
         }
+    }
+
+    /**
+     * 批量流程专用：**跑完才返回**，成功与否用返回值表示。
+     *
+     * 与 [startGenerate] 的区别：那个走单任务槽位 + 状态流，是给"一次生成一本书"的界面用的；
+     * 批量导入要连续处理多本书，需要顺序等待，也不该被单任务槽位的 `isActive` 挡住。
+     */
+    suspend fun generateNow(
+        book: BookRef,
+        totalPages: Int,
+        mode: TocMode,
+        progress: TocProgress = { _, _, _ -> },
+    ): Boolean {
+        val file = resolveFile(book) ?: return false
+        if (totalPages <= 0) return false
+        val (chapters, source) = computeChapters(book, file, totalPages, mode, progress)
+        if (chapters.isEmpty()) return false
+        library.replaceChapters(book.bookId, chapters, source)
+        return true
+    }
+
+    /** 只读页数。导入后自动生成目录时，书还没被打开过，数据库里 totalPages 还是 0 */
+    suspend fun pageCount(book: BookRef): Int {
+        val file = resolveFile(book) ?: return 0
+        val session = PdfRasterSession(file)
+        return try {
+            session.open()
+        } catch (t: Throwable) {
+            0
+        } finally {
+            runCatching { session.close() }
+        }
+    }
+
+    /** 四条来源的编排本体，[startGenerate] 与 [generateNow] 共用 */
+    private suspend fun computeChapters(
+        book: BookRef,
+        file: File,
+        totalPages: Int,
+        mode: TocMode,
+        progress: TocProgress,
+    ): Pair<List<Chapter>, TocSource> {
+        var chapters: List<Chapter> = emptyList()
+        var source = TocSource.NONE
+
+        when (mode) {
+            TocMode.OUTLINE_ONLY -> {
+                val outline = readOutline(book, totalPages)
+                if (outline != null) {
+                    chapters = outline.chapters
+                    source = TocSource.PDF_OUTLINE
+                }
+            }
+
+            TocMode.OCR_REANCHOR -> {
+                val base = library.loadChapters(book.bookId)
+                    .ifEmpty { readOutline(book, totalPages)?.chapters.orEmpty() }
+                if (base.isNotEmpty()) {
+                    chapters = generator.reanchorByOcr(file, base, totalPages, progress)
+                    source = TocSource.OCR
+                }
+            }
+
+            TocMode.OCR_SCAN -> {
+                chapters = generator.scanByOcr(file, totalPages, progress)
+                source = TocSource.OCR
+            }
+
+            TocMode.AUTO -> {
+                // 1) 人工校正过的 JSON 永远第一优先
+                parseConfigFile(findLocalOverride(book.bookId), totalPages)?.let {
+                    chapters = it
+                    source = TocSource.LOCAL_JSON
+                }
+                // 2) 内置书签：页码可信就直接用
+                if (chapters.isEmpty()) {
+                    val outline = readOutline(book, totalPages)
+                    when {
+                        outline == null -> Unit
+                        !outline.unreliable -> {
+                            chapters = outline.chapters
+                            source = TocSource.PDF_OUTLINE
+                        }
+                        // 3) 页码漂移 → OCR 重锚定
+                        else -> {
+                            chapters = generator.reanchorByOcr(file, outline.chapters, totalPages, progress)
+                            source = TocSource.OCR
+                        }
+                    }
+                }
+                // 4) 连书签都没有（扫描件）→ 全页眉扫描
+                if (chapters.isEmpty()) {
+                    chapters = generator.scanByOcr(file, totalPages, progress)
+                    source = TocSource.OCR
+                }
+            }
+        }
+        return chapters to source
     }
 
     // ------------------------------------------------------------------ 内置书签
@@ -260,6 +306,60 @@ class TocRepository(
 
     private fun internalJsonFile(bookId: String): File =
         File(File(context.filesDir, CHAPTER_DIR), "$bookId.json")
+
+    // ------------------------------------------------------------------ 批量导入
+
+    /** 一份待导入的目录 JSON：文件名（用于回报）+ 解析结果 */
+    data class ImportCandidate(val fileName: String, val config: ChapterConfig)
+
+    /**
+     * 读取用户挑中的一个 JSON（SAF uri）。解析不出来返回 null，
+     * 调用方会把它列进"失败"里给用户看，而不是静默丢掉。
+     */
+    suspend fun readImportConfig(uri: Uri): ImportCandidate? = withContext(Dispatchers.IO) {
+        val fileName = queryDisplayName(uri)
+            ?: uri.lastPathSegment?.substringAfterLast('/')
+            ?: "未命名.json"
+        val raw = runCatching {
+            context.contentResolver.openInputStream(uri)?.use { it.readBytes().toString(Charsets.UTF_8) }
+        }.getOrNull() ?: return@withContext null
+        val config = ChapterResolver.decodeConfig(raw) ?: return@withContext null
+        ImportCandidate(fileName, config)
+    }
+
+    /**
+     * 把导入的目录写进某本书。语义是**整表替换**：
+     * 先备份当前目录到 `<bookId>.json.bak`，再 [LibraryRepository.replaceChapters]。
+     *
+     * 备份失败不会阻断导入（用 runCatching 包着）——用户要的是把目录换对，
+     * 不是被一个备份动作卡住。
+     */
+    suspend fun applyImportedToc(book: BookSummary, chapters: List<Chapter>): Int =
+        withContext(Dispatchers.IO) {
+            backupCurrentToc(book)
+            library.replaceChapters(book.bookId, chapters, TocSource.LOCAL_JSON)
+            chapters.size
+        }
+
+    /** 把当前目录导出成 `<bookId>.json.bak`，方便导入错了还能退回上一版 */
+    private suspend fun backupCurrentToc(book: BookSummary) {
+        runCatching {
+            val current = library.loadChapters(book.bookId)
+            if (current.isEmpty()) return@runCatching
+            val base = externalJsonFile(book.bookId) ?: internalJsonFile(book.bookId)
+            val target = File(base.absolutePath + ".bak")
+            target.parentFile?.mkdirs()
+            val config = ChapterResolver.toConfig(book.bookId, book.title, current, TocSource.LOCAL_JSON)
+            target.writeText(ChapterResolver.encodeConfig(config), Charsets.UTF_8)
+        }
+    }
+
+    private fun queryDisplayName(uri: Uri): String? = runCatching {
+        context.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+            val index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+            if (index >= 0 && cursor.moveToFirst()) cursor.getString(index) else null
+        }
+    }.getOrNull()
 
     // ------------------------------------------------------------------ 文件定位
 
