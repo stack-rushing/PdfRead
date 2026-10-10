@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- 多选 PDF → 逐本导入并自动跑 OCR 全页眉扫描生成目录 -->
+    <item
+        android:id="@+id/action_batch_import_pdf"
+        android:title="@string/shelf_menu_batch_pdf"
+        app:showAsAction="never" />
+
+    <!-- 多选目录 JSON → 按书名匹配书架上的书，整表替换（旧目录自动备份） -->
+    <item
+        android:id="@+id/action_batch_import_toc"
+        android:title="@string/shelf_menu_batch_toc"
+        app:showAsAction="never" />
+</menu>

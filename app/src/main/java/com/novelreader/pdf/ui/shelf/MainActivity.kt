@@ -3,6 +3,8 @@ package com.novelreader.pdf.ui.shelf
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +47,19 @@ class MainActivity : AppCompatActivity() {
         viewModel.import(uri)
     }
 
+    /** 批量：多选 PDF → 逐本导入并自动跑 OCR 全页眉扫描生成目录 */
+    private val pickPdfs = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { uris ->
+        if (uris.isNullOrEmpty()) return@registerForActivityResult
+        uris.forEach { BookRepository.takePersistablePermission(this, it, Intent.FLAG_GRANT_READ_URI_PERMISSION) }
+        viewModel.importPdfs(uris)
+    }
+
+    /** 批量：多选目录 JSON → 按书名匹配书架上的书，整表替换 */
+    private val pickTocs = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { uris ->
+        if (uris.isNullOrEmpty()) return@registerForActivityResult
+        viewModel.importTocs(uris)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -60,8 +75,35 @@ class MainActivity : AppCompatActivity() {
         binding.shelfList.adapter = adapter
 
         binding.fabImport.setOnClickListener { launchPicker() }
+        binding.btnCancelBatch.setOnClickListener { viewModel.cancelBatch() }
 
         observeViewModel()
+    }
+
+    // ------------------------------------------------------------------ 菜单
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_shelf, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.action_batch_import_pdf -> {
+            // 部分网盘 / 文件管理器把 PDF 报成 octet-stream，两个都带上更稳
+            runCatching { pickPdfs.launch(arrayOf("application/pdf", "application/octet-stream")) }
+                .onFailure { snack(getString(R.string.shelf_batch_pick_pdf)) }
+            true
+        }
+
+        R.id.action_batch_import_toc -> {
+            // JSON 的 MIME 报得很乱：application/json / text/plain / octet-stream 都见过
+            runCatching {
+                pickTocs.launch(arrayOf("application/json", "text/plain", "application/octet-stream"))
+            }.onFailure { snack(getString(R.string.shelf_batch_pick_toc)) }
+            true
+        }
+
+        else -> super.onOptionsItemSelected(item)
     }
 
     private fun launchPicker() {
@@ -86,7 +128,27 @@ class MainActivity : AppCompatActivity() {
                     viewModel.state.collect { state ->
                         adapter.submitList(state.books)
                         binding.emptyView.isVisible = !state.loading && state.books.isEmpty()
-                        binding.importingView.isVisible = state.importing
+                        binding.importingView.isVisible = state.importing || viewModel.batch.value.running
+                        if (state.importing) binding.importingText.setText(R.string.shelf_importing)
+                    }
+                }
+                launch {
+                    // 批量任务进度：第 3 / 7 本 · 扫描页眉 45/102
+                    viewModel.batch.collect { batch ->
+                        binding.importingView.isVisible = batch.running || viewModel.state.value.importing
+                        binding.btnCancelBatch.isVisible = batch.running
+                        binding.importingDetail.isVisible = batch.running
+                        if (!batch.running) return@collect
+                        binding.importingText.text = batch.title
+                        val label = getString(R.string.shelf_batch_progress, batch.index, batch.total, batch.phase)
+                        binding.importingDetail.text = if (batch.pages > 0) {
+                            getString(
+                                R.string.shelf_batch_progress_pages,
+                                batch.index, batch.total, batch.phase, batch.done, batch.pages,
+                            )
+                        } else {
+                            label
+                        }
                     }
                 }
                 launch {
@@ -94,11 +156,47 @@ class MainActivity : AppCompatActivity() {
                         when (event) {
                             is ShelfEvent.OpenBook -> openReader(event.book)
                             is ShelfEvent.Message -> snack(event.text)
+                            is ShelfEvent.TocImported -> showImportSummary(event.summary)
                         }
                     }
                 }
             }
         }
+    }
+
+    /** 批量结果逐条摊开给用户看：成功、没匹配上的、失败的都列出来，不做"静默成功" */
+    private fun showImportSummary(summary: TocImportSummary) {
+        if (summary.handled == 0) {
+            snack(getString(R.string.shelf_batch_done_none))
+            return
+        }
+        val parts = mutableListOf<String>()
+        if (summary.imported.isNotEmpty()) {
+            parts += getString(
+                R.string.shelf_batch_done_ok,
+                summary.imported.size,
+                summary.imported.joinToString("\n") { "· $it" },
+            )
+        }
+        if (summary.unmatched.isNotEmpty()) {
+            parts += getString(
+                R.string.shelf_batch_done_unmatched,
+                summary.unmatched.size,
+                summary.unmatched.joinToString("\n") { "· $it" },
+            )
+        }
+        if (summary.failed.isNotEmpty()) {
+            parts += getString(
+                R.string.shelf_batch_done_failed,
+                summary.failed.size,
+                summary.failed.joinToString("\n") { "· $it" },
+            )
+        }
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.shelf_batch_done_title)
+            .setMessage(parts.joinToString("\n\n"))
+            .setPositiveButton(R.string.reader_ok, null)
+            .show()
     }
 
     private fun openReader(book: com.novelreader.pdf.data.model.BookRef) {

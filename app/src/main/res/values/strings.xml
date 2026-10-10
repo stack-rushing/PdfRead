@@ -16,6 +16,20 @@
     <string name="shelf_delete_with_file_confirm">要连本地副本一起删除吗？\n\n确定 = 同时删除 PDF 本地副本（释放磁盘空间）\n取消 = 只移除书架记录，文件保留</string>
     <string name="shelf_importing">正在导入…</string>
 
+    <!-- 批量导入 -->
+    <string name="shelf_menu_batch_pdf">批量导入 PDF 并生成目录</string>
+    <string name="shelf_menu_batch_toc">批量导入目录 JSON</string>
+    <string name="shelf_batch_cancel">取消</string>
+    <string name="shelf_batch_progress">第 %1$d / %2$d 本 · %3$s</string>
+    <string name="shelf_batch_progress_pages">第 %1$d / %2$d 本 · %3$s %4$d/%5$d</string>
+    <string name="shelf_batch_pick_pdf">选择要导入的 PDF（可多选）</string>
+    <string name="shelf_batch_pick_toc">选择目录 JSON（可多选）</string>
+    <string name="shelf_batch_done_title">批量导入完成</string>
+    <string name="shelf_batch_done_ok">成功 %1$d 本：\n%2$s</string>
+    <string name="shelf_batch_done_unmatched">未匹配到书架上的书 %1$d 个：\n%2$s</string>
+    <string name="shelf_batch_done_failed">失败 %1$d 个：\n%2$s</string>
+    <string name="shelf_batch_done_none">没有处理任何文件</string>
+
     <!-- 阅读器 -->
     <string name="reader_back">返回</string>
     <string name="reader_toc">目录</string>
