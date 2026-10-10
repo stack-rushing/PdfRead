@@ -13,4 +13,10 @@
         android:id="@+id/action_batch_import_toc"
         android:title="@string/shelf_menu_batch_toc"
         app:showAsAction="never" />
+
+    <!-- 词书（自己准备的词典文件）与查词 -->
+    <item
+        android:id="@+id/action_dictionary"
+        android:title="@string/shelf_menu_dictionary"
+        app:showAsAction="never" />
 </menu>

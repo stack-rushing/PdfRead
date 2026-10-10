@@ -42,6 +42,12 @@
             android:exported="false"
             android:theme="@style/Theme.NovelReader.Reader" />
 
+        <!-- 词书与查词：数据来自用户自己导入的文件，App 不附带词典内容 -->
+        <activity
+            android:name=".ui.dict.DictionaryActivity"
+            android:exported="false"
+            android:label="@string/dict_title" />
+
         <!-- 用于分享导出的章节 JSON（无需任何存储权限） -->
         <provider
             android:name="androidx.core.content.FileProvider"
