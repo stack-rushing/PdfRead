@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <ImageView
+    <com.novelreader.pdf.ui.reader.ZoomableImageView
         android:id="@+id/pageImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
