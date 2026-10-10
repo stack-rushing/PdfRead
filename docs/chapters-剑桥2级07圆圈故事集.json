@@ -1,0 +1,119 @@
+{
+  "_disclaimer": "本文件只含目录条目（章节标题 + 页码 + 层级），不含书籍正文。由 NovelPdfReader 在你本机对你自己的 PDF 生成，供个人自用；请支持正版。版权方如认为不妥，提 issue 即删。详见仓库 README §12 免责声明与版权说明。",
+    "bookId": "",
+    "title": "剑桥小说馆2级07 圆圈故事集",
+    "pageNumberBase": 1,
+    "source": "OCR",
+    "chapters": [
+        {
+            "title": null,
+            "titleZh": "目录",
+            "titleEn": "Contents",
+            "startPage": 4,
+            "endPage": 6,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "前言",
+            "titleEn": "Preface",
+            "startPage": 7,
+            "endPage": 9,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "读前思考",
+            "titleEn": "Before reading",
+            "startPage": 10,
+            "endPage": 10,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 1 Quick Man Tan",
+            "titleEn": null,
+            "startPage": 11,
+            "endPage": 20,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 2 The Wheel on the Wall",
+            "titleEn": null,
+            "startPage": 21,
+            "endPage": 26,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 3 Spec ial CIay",
+            "titleEn": null,
+            "startPage": 27,
+            "endPage": 38,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 4 The Trishaw Man",
+            "titleEn": null,
+            "startPage": 39,
+            "endPage": 45,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 5 Beautiful Thing",
+            "titleEn": null,
+            "startPage": 46,
+            "endPage": 58,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "读后活动",
+            "titleEn": "After reading",
+            "startPage": 59,
+            "endPage": 67,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "亠参考译文",
+            "titleEn": "Translation",
+            "startPage": 68,
+            "endPage": 94,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        }
+    ]
+}

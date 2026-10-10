@@ -1,0 +1,108 @@
+{
+  "_disclaimer": "本文件只含目录条目（章节标题 + 页码 + 层级），不含书籍正文。由 NovelPdfReader 在你本机对你自己的 PDF 生成，供个人自用；请支持正版。版权方如认为不妥，提 issue 即删。详见仓库 README §12 免责声明与版权说明。",
+    "bookId": "",
+    "title": "剑桥小说馆2级18 派对与礼物",
+    "pageNumberBase": 1,
+    "source": "OCR",
+    "chapters": [
+        {
+            "title": null,
+            "titleZh": "简介",
+            "titleEn": "Introduction",
+            "startPage": 5,
+            "endPage": 5,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "前言",
+            "titleEn": "Preface",
+            "startPage": 6,
+            "endPage": 8,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "目录",
+            "titleEn": "Contents",
+            "startPage": 9,
+            "endPage": 14,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 1 he Carden Party",
+            "titleEn": null,
+            "startPage": 15,
+            "endPage": 39,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "活动",
+            "titleEn": "Activities",
+            "startPage": 40,
+            "endPage": 42,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 2 er r Ball",
+            "titleEn": null,
+            "startPage": 43,
+            "endPage": 58,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 3 he DoII's 晷 0 se",
+            "titleEn": null,
+            "startPage": 59,
+            "endPage": 72,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "参考译文",
+            "titleEn": "Translation",
+            "startPage": 73,
+            "endPage": 98,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "词汇与表达",
+            "titleEn": "Words & expressions",
+            "startPage": 99,
+            "endPage": 102,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        }
+    ]
+}

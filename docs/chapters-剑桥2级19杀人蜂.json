@@ -1,0 +1,163 @@
+{
+  "_disclaimer": "本文件只含目录条目（章节标题 + 页码 + 层级），不含书籍正文。由 NovelPdfReader 在你本机对你自己的 PDF 生成，供个人自用；请支持正版。版权方如认为不妥，提 issue 即删。详见仓库 README §12 免责声明与版权说明。",
+    "bookId": "",
+    "title": "剑桥小说馆2级19 杀人蜂",
+    "pageNumberBase": 1,
+    "source": "OCR",
+    "chapters": [
+        {
+            "title": null,
+            "titleZh": "简介",
+            "titleEn": "Introduction",
+            "startPage": 5,
+            "endPage": 5,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "前言",
+            "titleEn": "Preface",
+            "startPage": 6,
+            "endPage": 10,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "目录",
+            "titleEn": "Contents",
+            "startPage": 11,
+            "endPage": 17,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 1 A car ride",
+            "titleEn": null,
+            "startPage": 18,
+            "endPage": 25,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 2 The farm",
+            "titleEn": null,
+            "startPage": 26,
+            "endPage": 32,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 3 G0ing home",
+            "titleEn": null,
+            "startPage": 33,
+            "endPage": 38,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 4 The j ourney begins",
+            "titleEn": null,
+            "startPage": 39,
+            "endPage": 46,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 5 G0ing north",
+            "titleEn": null,
+            "startPage": 47,
+            "endPage": 53,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 6 Escape",
+            "titleEn": null,
+            "startPage": 54,
+            "endPage": 62,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 7 lnverness",
+            "titleEn": null,
+            "startPage": 63,
+            "endPage": 68,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 8 The camp",
+            "titleEn": null,
+            "startPage": 69,
+            "endPage": 72,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 9 Eighteen months later",
+            "titleEn": null,
+            "startPage": 73,
+            "endPage": 76,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "参考译文",
+            "titleEn": "Translation",
+            "startPage": 77,
+            "endPage": 106,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "词汇与表达",
+            "titleEn": "Words & expressions",
+            "startPage": 107,
+            "endPage": 110,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        }
+    ]
+}

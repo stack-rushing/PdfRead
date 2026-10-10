@@ -7,15 +7,20 @@ import com.novelreader.pdf.data.model.ChapterResolver
 /**
  * 「OCR 全页眉扫描」的状态机（纯逻辑，可单元测试）。
  *
- * 逐页喂入顶部条带的行，产出章节表。四条规则都是用真实扫描件调出来的：
+ * 逐页喂入顶部条带的行，产出章节表。六条规则都是用真实扫描件调出来的
+ * （剑桥小说馆这一套书里就有三种不同的章节页排版）：
  *
  * 1. **编号取序号，不取 OCR 数字**：OCR 把 `Chapter 2` 读成 `Chapter 乥`、`Chapter 3` 读成 `Chapter 5`，
  *    但页码和顺序全对。所以第 N 个章节标题就是 Chapter N —— 这样连"数字完全认不出来"的页面也能救回来。
- * 2. **遇到第一个后置附文就停止收章节**：这类分级读物正文到 `After reading` 就结束了，
- *    后面的《学习指导》里每页都带 `Chapter 2`、`Chapter 3` 这样的页眉（其实是习题分组），
- *    不截断就会凭空多出 Chapter 12/13/14。
- * 3. **同名去重**：书里有两个 `目录` 页，但阅读器只需要一个跳转目标，重复的只保留第一次。
- * 4. **跨行拼接标题**：扫描件的标题常被折成两行（`Chapter 1 A hand on a` + `guitar`），
+ * 2. **编号独占一行时，标题在下一行**：2级16/17/19 都是这个版式（`Chapter 1` 换行 `It's not fair!`），
+ *    而 2级08 是 `Chapter 1 A hand on a guitar` 挤在一行。两种都要认。
+ * 3. **整页页眉只有一行、且不像附文标题 → 这一行就是章节名**：2级07《圆圈故事集》和
+ *    2级18《派对与礼物》干脆没有 `Chapter N`（`Quick Man Tan`、`he Carden Party`）。
+ * 4. **只在"终止性"后置附文处停止收章节**：`Translation`/`Learning guide`/`Words & expressions`
+ *    这些永远在书末，见到就停；但 `ACTIVITIES`/`After reading` 在短篇合集里会夹在两篇之间，
+ *    在那里停会把后两个故事整段丢掉（2级18 实测）。
+ * 5. **同名去重**：书里有两个 `目录` 页，但阅读器只需要一个跳转目标，重复的只保留第一次。
+ * 6. **跨行拼接标题**：扫描件的标题常被折成两行（`Chapter 1 A hand on a` + `guitar`），
  *    以及"英文标题一行 + 中文译名一行"的双语形态，都要合并成一个条目。
  */
 class OcrChapterBuilder(private val totalPages: Int) {
@@ -37,23 +42,41 @@ class OcrChapterBuilder(private val totalPages: Int) {
             val body = HeadingDetector.chapterBody(head)
             if (body != null) {
                 ordinal++
-                val full = joinContinuation(body, lines)
+                // 空串 = 编号独占一行（版式 2），标题去下面几行取
+                val full = if (body.isEmpty()) titleFromFollowing(lines).orEmpty() else joinContinuation(body, lines)
                 return add(pageIndex, ChapterKind.CHAPTER, "Chapter $ordinal $full".trim(), null)
             }
         }
 
-        val hit = HeadingDetector.sectionHit(head) ?: return null
-        if (hit.kind == HeadingDetector.Kind.BACK) backStarted = true
+        val hit = HeadingDetector.sectionHit(head)
+        if (hit == null) {
+            // 版式 3：不是附文标题，而且整页页眉只有一行 → 这一行就是章节名。
+            // **必须放在 sectionHit 之后**：`Contents 目 录` 也满足"只有一行"，
+            // 先判版式 3 的话，两个目录页会变成 `Chapter 1 Contents 目 录`（实测踩过）。
+            if (!backStarted) {
+                HeadingDetector.bareTitle(lines)?.let { bare ->
+                    ordinal++
+                    return add(pageIndex, ChapterKind.CHAPTER, "Chapter $ordinal $bare", null)
+                }
+            }
+            return null
+        }
+        // 只有终止性附文才封口；ACTIVITIES / After reading 允许后面还有正文（短篇合集）
+        if (HeadingDetector.isTerminalBack(hit)) backStarted = true
 
         // 双语形态：英文标题在首行、中文译名在下一行 → 中文当主标题、规范英文当副标题。
         // 但只有 ≥3 个汉字的中文行才可信：实测 "Preface" 下面那行被识别成 "刖口"（前言 的误识），
         // 2 个汉字时反而是关键词表里的规范名更可靠。
+        //
+        // 再加一道"必须包含规范名"的检查：实测某本的《参考译文》页眉被识别成 "第章空房子"
+        // （把上一页的章节名糊上来了），这种就直接用规范名"参考译文"。
         val cjkLine = lines.drop(1).firstOrNull { HeadingDetector.isShortCjkLine(it) }
             ?.let { HeadingDetector.cjkOf(it) }
+        val cleanCjk = cjkLine?.takeIf { it.contains(hit.zhKey) }
         val zh = when {
-            cjkLine != null && cjkLine.length >= 3 -> cjkLine
+            cleanCjk != null && cleanCjk.length >= 3 -> cleanCjk
             hit.zhKey.isNotEmpty() -> hit.zhKey
-            cjkLine != null -> cjkLine
+            cleanCjk != null -> cleanCjk
             else -> HeadingDetector.cjkOf(head).takeIf { it.isNotEmpty() }
         }
         val title = zh ?: hit.canonicalEn
@@ -75,6 +98,38 @@ class OcrChapterBuilder(private val totalPages: Int) {
         if (body.length + next.length > 40) return body
         if (!body.last().isLetter()) return body
         return "$body $next"
+    }
+
+    /**
+     * 编号独占一行时（版式 2），从下面几行里把标题捞出来。
+     *
+     * 实测形态：
+     *   `Chapter 1` / `It's not fair!`                     → 两行
+     *   `hapter 6` / `Kompier doesn't want` / `to know`    → 标题换行，第三行才是结尾
+     *   `hapter 7` / `Meeting Peter van` / `、 VVIC`        → 第三行是噪声，不能接
+     *
+     * 捞不到就返回 null：这一章照样登记，标题退化成 "Chapter N"，但**页码是对的**。
+     */
+    private fun titleFromFollowing(lines: List<String>): String? {
+        val first = lines.getOrNull(1) ?: return null
+        if (HeadingDetector.looksLikeHeading(first)) return null
+        val words = first.split(Regex("\\s+")).filter { it.isNotEmpty() }
+        if (words.isEmpty() || words.size > 8 || first.length > 60) return null
+
+        var title = first
+        val third = lines.getOrNull(2)
+        if (third != null && !HeadingDetector.looksLikeHeading(third)) {
+            val w3 = third.split(Regex("\\s+")).filter { it.isNotEmpty() }
+            // 续行必须是"小写开头的短尾巴"：这样 `to know` 会被接上，
+            // 而 `、 VVIC`、`ACTIVITIES` 这类噪声会被挡掉。
+            if (w3.isNotEmpty() && w3.size <= 3 && third.length <= 24 &&
+                third.none { it.isDigit() } && third.first().isLowerCase() &&
+                title.length + third.length <= 60
+            ) {
+                title = "$title $third"
+            }
+        }
+        return title
     }
 
     private fun add(page: Int, kind: ChapterKind, title: String, titleEn: String?): Chapter? {

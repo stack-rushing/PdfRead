@@ -24,7 +24,9 @@ object HeadingDetector {
     private val TOKEN = Regex("[A-Za-z]+|\\d+|[\\u3400-\\u4DBF\\u4E00-\\u9FFF\\u3040-\\u30FF]+")
     private val WHITESPACE = Regex("\\s+")
 
-    private val CHAPTER_WORDS = listOf("chapter", "part", "unit", "section", "book", "lesson")
+    // prologue/epilogue：2级19《杀人蜂》的尾声页眉是 `pilogue`（OCR 掉了首字母 E），
+    // 靠编辑距离 ≤1 模糊匹配救回来；不放进这个词表就整条丢失。
+    private val CHAPTER_WORDS = listOf("chapter", "part", "unit", "section", "book", "lesson", "prologue", "epilogue")
 
     private val FRONT_PHRASES = listOf(
         "contents" to "目录",
@@ -49,7 +51,25 @@ object HeadingDetector {
         "answer key" to "答案",
         "activities" to "活动",
         "appendix" to "附录",
+        "words & expressions" to "词汇与表达",
     )
+
+    /**
+     * **终止性**后置附文：出现在这些之后就不该再有正文了。
+     *
+     * 为什么需要这个区分：2级18《派对与礼物》是三个短篇的合集，每篇故事后面都夹着
+     * `ACTIVITIES PAGES 6-14` 这样的活动页。早期规则"见到第一个后置附文就停止收章节"，
+     * 于是第二个、第三个故事被整段丢掉（p42、p58 全没了）。
+     * 而 `Translation` / `Learning guide` / `Words & expressions` 永远在书末，
+     * 见到它们才真的可以停。
+     */
+    private val TERMINAL_BACK = setOf(
+        "learning guide", "translation", "glossary", "answer key", "appendix", "words & expressions",
+    )
+
+    /** 某个后置附文是不是"到此为止"的类型（供状态机决定要不要停止收章节） */
+    fun isTerminalBack(hit: Hit): Boolean =
+        hit.kind == Kind.BACK && TERMINAL_BACK.contains(hit.canonicalEn.lowercase())
 
     /** 短语之后允许的尾巴长度（通常只是中文译名），超出就不算标题行 */
     private const val MAX_TAIL_CHARS = 16
@@ -57,7 +77,13 @@ object HeadingDetector {
     /** 纯中文标题行的长度上限 */
     const val MAX_CJK_ONLY_LINE = 12
 
-    /** 章节标题：行首是 chapter/part/... → 返回去掉编号后的正文；不是则返回 null */
+    /**
+     * 章节标题：行首是 chapter/part/... → 返回去掉编号后的正文。
+     *
+     * **返回空串是有效结果**：这套书里 `Chapter 1` 单独占一行、标题在下一行的版式很常见
+     * （2级16/17/19 都是），早期版本在"去掉编号后没剩下东西"时返回 null，
+     * 等于把整章直接丢掉。现在交给调用方去下一行取标题。
+     */
     fun chapterBody(line: String): String? {
         val tokens = TOKEN.findAll(line).map { it.value }.toList()
         val first = tokens.firstOrNull() ?: return null
@@ -80,7 +106,34 @@ object HeadingDetector {
         while (rest.isNotEmpty() && rest.last().none { it.isLetterOrDigit() }) {
             rest = rest.dropLast(1)
         }
-        return rest.joinToString(" ").trim().ifEmpty { null }
+        return rest.joinToString(" ").trim()
+    }
+
+    /**
+     * 「整页页眉只有一行」的版式：这一行就是章节标题，压根没有 `Chapter N`。
+     *
+     * 2级07《圆圈故事集》和 2级18《派对与礼物》都是这样（`Quick Man Tan`、`he Carden Party`）。
+     *
+     * 为什么敢用"只有一行"当判据：条带取的是页面顶部 20%，正文页在这个高度必然有 3~6 行；
+     * 只有章节首页才可能整块留白、只剩标题一行。实测五本书里这个条件命中的页面全部是章节首页
+     * （外加两三行 OCR 噪声，由下面的过滤条件挡掉）。
+     */
+    fun bareTitle(lines: List<String>): String? {
+        if (lines.size != 1) return null
+        val line = lines[0].trim()
+        if (line.length !in 2..40) return null
+        // 必须含 ASCII 字母：挡掉纯噪声（`0`、`孬 ． 疒 艹 、`）和纯中文行（那些是附文，走 sectionHit）
+        if (line.none { it.code < 128 && it.isLetter() }) return null
+        // 中文标点 → 不是英文标题（实测 `北 语 社 " 剑 桥 国 际 英 《 系 列 经 典 教 材 推 荐`）
+        if (line.any { it in "《》〈〉“”‘’、。，；：（）【】—…·" }) return null
+        val words = line.split(Regex("\\s+")).filter { it.isNotEmpty() }
+        if (words.isEmpty() || words.size > 6) return null
+        // 句末标点 → 更像正文残句
+        if (line.last() in ".!,;:") return null
+        // 全大写 → 更像 `LOOKING BACK` / `CAMBRIDGE` 这类版面标记，而不是书名体标题
+        val letters = line.filter { it.isLetter() }
+        if (letters.isNotEmpty() && letters.none { it.isLowerCase() }) return null
+        return line
     }
 
     /** 附文标题：行首锚定匹配短语，或整行是短中文且含中文关键词 */
@@ -90,8 +143,10 @@ object HeadingDetector {
 
         for ((table, kind) in listOf(FRONT_PHRASES to Kind.FRONT, BACK_PHRASES to Kind.BACK)) {
             for ((phrase, zhKey) in table) {
-                val words = phrase.split(" ")
-                if (asciiTokens.size < words.size) continue
+                // 短语里的 "&" 之类不是 TOKEN 能识别的词，先滤掉再逐词比对
+                // （`Words & expressions` 要能匹配上 `Words and expressions` 的实际排版）
+                val words = phrase.split(" ").filter { w -> w.any { it.isLetter() } }
+                if (words.isEmpty() || asciiTokens.size < words.size) continue
                 if (words.indices.any { !wordMatches(asciiTokens[it], words[it]) }) continue
                 val tail = tokens.drop(words.size).joinToString(" ")
                 if (tail.length <= MAX_TAIL_CHARS) {

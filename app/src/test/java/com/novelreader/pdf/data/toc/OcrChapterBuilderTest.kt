@@ -20,9 +20,11 @@ import org.junit.Test
  */
 class OcrChapterBuilderTest {
 
-    private fun loadFixture(): Map<Int, List<String>> {
-        val stream = javaClass.getResourceAsStream("/cambridge_ocr_strips.tsv")
-            ?: error("缺少 OCR 测试夹具 cambridge_ocr_strips.tsv")
+    private fun loadFixture(): Map<Int, List<String>> = loadFixture("cambridge_ocr_strips.tsv")
+
+    private fun loadFixture(name: String): Map<Int, List<String>> {
+        val stream = javaClass.getResourceAsStream("/$name")
+            ?: error("缺少 OCR 测试夹具 $name")
         return stream.bufferedReader(Charsets.UTF_8).useLines { seq ->
             seq.mapNotNull { line ->
                 val tab = line.indexOf('\t')
@@ -34,6 +36,13 @@ class OcrChapterBuilderTest {
                     .filter { it.isNotEmpty() }
             }.toMap()
         }
+    }
+
+    private fun replayFixture(name: String, totalPages: Int): List<com.novelreader.pdf.data.model.Chapter> {
+        val pages = loadFixture(name)
+        val builder = OcrChapterBuilder(totalPages)
+        pages.toSortedMap().forEach { (page, lines) -> builder.accept(page, lines) }
+        return builder.finish()
     }
 
     private fun replay(): List<com.novelreader.pdf.data.model.Chapter> {
@@ -147,5 +156,92 @@ class OcrChapterBuilderTest {
         assertEquals("第 1 章应落在 PDF 第 14 页", 14, body.first().startPage + 1)
         assertEquals("第 11 章应落在 PDF 第 58 页", 58, body.last().startPage + 1)
         assertEquals("标题里的 Chapter 编号来自序号", "Chapter 1 A hand on a guitar", body.first().title)
+    }
+
+    // ==================================================================================
+    //  剑桥小说馆这一套书里同时存在**三种**章节页排版。只用《真爱无界》一本调规则，
+    //  另外两种版式会整段漏掉——下面三个夹具就是按这个补的，全部来自真实扫描件。
+    // ==================================================================================
+
+    @Test
+    fun `版式二 编号独占一行时标题在下一行`() {
+        // 2级17《魔幻手机》：页眉是 `Chapter 1` 换行 `It's not fair!`
+        // 与印刷目录逐页一致（PDF 页 = 印刷页 + 8）
+        val chapters = replayFixture("cambridge_2_17_strips.tsv", 102)
+        chapters.forEach { println("  P${it.startPage + 1} ${it.kind} ${it.title}") }
+
+        val body = chapters.filter { it.kind == ChapterKind.CHAPTER }
+        assertEquals("10 章一条都不能少", 10, body.size)
+        assertEquals(
+            "章节页码（0 基页索引，对应夹具里的 p015/p020/…）",
+            listOf(15, 20, 26, 31, 40, 44, 49, 54, 58, 66),
+            body.map { it.startPage },
+        )
+        // 编号一律来自序号：这一页的 `Chapter` 后面那个字 OCR 认成了汉字"乥"
+        assertEquals("Chapter 2 lt's amazing ！", body[1].title)
+        // 这一页 OCR 把 3 认成了 5，按序号纠正回 3
+        assertEquals("Chapter 3 lhat's strange ！", body[2].title)
+        // 标题独占下一行时也要取到
+        assertEquals("Chapter 6 We'll be famous", body[5].title)
+        // 收尾附文用规范名，不被页眉上糊过来的章节名带偏
+        assertEquals("参考译文", chapters.first { it.title == "参考译文" }.title)
+        assertEquals("词汇与表达", chapters.last().title)
+    }
+
+    @Test
+    fun `版式三 整页页眉只有一行标题`() {
+        // 2级07《圆圈故事集》：短篇集，压根没有 `Chapter N`，页眉就是标题本身
+        val chapters = replayFixture("cambridge_2_07_strips.tsv", 94)
+        chapters.forEach { println("  P${it.startPage + 1} ${it.kind} ${it.title}") }
+
+        val body = chapters.filter { it.kind == ChapterKind.CHAPTER }
+        assertEquals("5 个故事", 5, body.size)
+        assertEquals(
+            "章节页码（0 基页索引，对应夹具里的 p010/p020/…）",
+            listOf(10, 20, 26, 38, 45),
+            body.map { it.startPage },
+        )
+        assertEquals("Chapter 1 Quick Man Tan", body[0].title)
+        assertEquals("Chapter 5 Beautiful Thing", body[4].title)
+    }
+
+    @Test
+    fun `短篇合集里夹在中间的 ACTIVITIES 不能截断后面的故事`() {
+        // 2级18《派对与礼物》：三个短篇，每篇后面都夹着 ACTIVITIES 活动页。
+        // 早期规则"见到第一个后置附文就停止"会把第 2、3 个故事整段丢掉。
+        val chapters = replayFixture("cambridge_2_18_strips.tsv", 102)
+        chapters.forEach { println("  P${it.startPage + 1} ${it.kind} ${it.title}") }
+
+        val body = chapters.filter { it.kind == ChapterKind.CHAPTER }
+        assertEquals("3 个故事都要", 3, body.size)
+        assertEquals(
+            "章节页码（0 基页索引）",
+            listOf(14, 42, 58),
+            body.map { it.startPage },
+        )
+        assertTrue("活动页本身仍应作为一个附文条目", chapters.any { it.title == "活动" })
+    }
+
+    @Test
+    fun `无编号版式的噪声行不会被当成章节`() {
+        // 下面这些全是真实 OCR 里出现过的"只有一行"的条带，但都不是章节标题
+        assertNull("纯数字", HeadingDetector.bareTitle(listOf("0")))
+        assertNull("汉字噪声", HeadingDetector.bareTitle(listOf("孬 ． 疒 艹 、")))
+        assertNull("全大写版面标记", HeadingDetector.bareTitle(listOf("LOOKING BACK")))
+        assertNull("中文书名号", HeadingDetector.bareTitle(listOf("北 语 社 “ 剑 桥 国 际 英 《 系 列 经 典 教 材 推 荐")))
+        assertNull("正文残句带句末标点", HeadingDetector.bareTitle(listOf("Henry was the cook.")))
+        assertNull("两行就不是这个版式", HeadingDetector.bareTitle(listOf("Quick Man Tan", "CaIeb had more")))
+        assertEquals("真的标题要认出来", "The Wheel on the Wall", HeadingDetector.bareTitle(listOf("The Wheel on the Wall")))
+
+        // 编号独占一行时 chapterBody 返回空串（而不是 null）——这是版式二的信号
+        assertEquals("", HeadingDetector.chapterBody("Chapter 1"))
+        assertEquals("", HeadingDetector.chapterBody("hapter 乥"))
+        assertEquals("A hand on a guitar", HeadingDetector.chapterBody("Chapter 1 A hand on a guitar"))
+
+        // 终止性附文的判定：Translation 之后不再收章节，Activities 之后还要继续收
+        assertEquals(true, HeadingDetector.isTerminalBack(HeadingDetector.sectionHit("Translation")!!))
+        assertEquals(true, HeadingDetector.isTerminalBack(HeadingDetector.sectionHit("Learning guide")!!))
+        assertEquals(false, HeadingDetector.isTerminalBack(HeadingDetector.sectionHit("After reading")!!))
+        assertEquals(false, HeadingDetector.isTerminalBack(HeadingDetector.sectionHit("ACTIVITIES PAGES 6 一 14")!!))
     }
 }

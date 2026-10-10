@@ -1,0 +1,152 @@
+{
+  "_disclaimer": "本文件只含目录条目（章节标题 + 页码 + 层级），不含书籍正文。由 NovelPdfReader 在你本机对你自己的 PDF 生成，供个人自用；请支持正版。版权方如认为不妥，提 issue 即删。详见仓库 README §12 免责声明与版权说明。",
+    "bookId": "",
+    "title": "剑桥小说馆2级16 阿姆斯特丹风波",
+    "pageNumberBase": 1,
+    "source": "OCR",
+    "chapters": [
+        {
+            "title": null,
+            "titleZh": "目录",
+            "titleEn": "Contents",
+            "startPage": 5,
+            "endPage": 7,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "前言",
+            "titleEn": "Preface",
+            "startPage": 8,
+            "endPage": 10,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "故事中的人物",
+            "titleEn": "People in the story",
+            "startPage": 11,
+            "endPage": 11,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "FRONT",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 1 The empty house",
+            "titleEn": null,
+            "startPage": 12,
+            "endPage": 16,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 2 Mum, we ， ve got something",
+            "titleEn": null,
+            "startPage": 17,
+            "endPage": 24,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 3 G0ing t0 the police",
+            "titleEn": null,
+            "startPage": 25,
+            "endPage": 34,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 4 L00king for the p ainting",
+            "titleEn": null,
+            "startPage": 35,
+            "endPage": 41,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 5 The room at the top",
+            "titleEn": null,
+            "startPage": 42,
+            "endPage": 50,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 6 Kompier doesn't want to know",
+            "titleEn": null,
+            "startPage": 51,
+            "endPage": 54,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 7 Meeting Peter van",
+            "titleEn": null,
+            "startPage": 55,
+            "endPage": 62,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "Chapter 8 Catching the robbers",
+            "titleEn": null,
+            "startPage": 63,
+            "endPage": 70,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "CHAPTER",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "参考译文",
+            "titleEn": "Translation",
+            "startPage": 71,
+            "endPage": 98,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        },
+        {
+            "title": null,
+            "titleZh": "词汇与表达",
+            "titleEn": "Words & expressions",
+            "startPage": 99,
+            "endPage": 102,
+            "level": 0,
+            "parentIndex": -1,
+            "kind": "BACK",
+            "confidence": 60
+        }
+    ]
+}
