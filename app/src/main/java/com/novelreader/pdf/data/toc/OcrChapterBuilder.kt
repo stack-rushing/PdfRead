@@ -30,6 +30,15 @@ class OcrChapterBuilder(private val totalPages: Int) {
     private var ordinal = 0
     private var backStarted = false
 
+    /** 合集里已经切出几本（0 表示还没切过，第一本在遇到 `作者简介` 时才建组） */
+    private var groupCount = 0
+
+    /** 当前条目该挂到哪个分组下（单本文件时一直是 ROOT） */
+    private var currentGroupIndex: Int = Chapter.ROOT
+
+    /** 上一张有内容的页的行，用来尽力猜书名（扉页在 `作者简介` 之前） */
+    private var lastNonEmptyLines: List<String> = emptyList()
+
     /**
      * 喂入一页的顶部条带文本（按行）。返回该页新产生的条目，没有则返回 null。
      */
@@ -37,6 +46,25 @@ class OcrChapterBuilder(private val totalPages: Int) {
         val lines = rawLines.map { it.trim() }.filter { it.isNotEmpty() }
         if (lines.isEmpty()) return null
         val head = lines[0]
+        val previousLines = lastNonEmptyLines
+        lastNonEmptyLines = lines
+
+        // ---------------------------------------------------------------- 多本合集
+        // 实测：剑桥《赃款》是一个 368 页的装订本，里面装了 5 本小说，每本都以
+        // `作者简介` → `故事导读` → `Contents 目录` → … → `Chapter 1` 开头。
+        // 不切分会出现两个致命错误：
+        //   ① 章节号靠序号累加 → 第二本的 Chapter 1 被写成 Chapter 11；
+        //   ② 第一本的《参考译文》会封口 → 后面四本的章节整段丢失
+        //      （实测还吐出一条跨 300 页的"读前思考"垃圾条目）。
+        if (HeadingDetector.isBookStart(head) && (groupCount == 0 || ordinal > 0)) {
+            groupCount++
+            ordinal = 0
+            backStarted = false
+            val group = add(pageIndex, ChapterKind.GROUP, bookTitle(groupCount, previousLines), null)
+            // 后面这本书里的所有条目都挂到这个分组下
+            currentGroupIndex = group?.index ?: currentGroupIndex
+            return group
+        }
 
         if (!backStarted) {
             val body = HeadingDetector.chapterBody(head)
@@ -132,13 +160,49 @@ class OcrChapterBuilder(private val totalPages: Int) {
         return title
     }
 
-    private fun add(page: Int, kind: ChapterKind, title: String, titleEn: String?): Chapter? {
+    /**
+     * 合集里每一本的组名。
+     *
+     * 先把话说清楚：**扫描件里拿不到可靠书名**。每本书的扉页（`CAMBRIDGE` + 书名）OCR 得半斤八两——
+     * 第一本读出过 `Dirty M on`，第二本只剩 `CAM BRIDGE`。所以这里只做尽力而为：
+     * 上一张有内容的页里若有一行像英文书名就带上，否则退化成「第 N 本」，由使用者在导出的 JSON 里改名。
+     */
+    private fun bookTitle(index: Int, previousLines: List<String>): String {
+        val candidate = previousLines.firstOrNull { line ->
+            val letters = line.filter { it.isLetter() }
+            // "CAMBRIDGE" 会被 OCR 认成 CAMBRTDGE / CAM BRIDGE 之类，所以用编辑距离而不是相等
+            val lower = letters.lowercase()
+            val isPublisher = lower.isNotEmpty() &&
+                (lower == "cambridge" || HeadingDetector.levenshtein(lower, "cambridge", 2) <= 2)
+            letters.length >= 4 &&
+                line.any { it.code < 128 && it.isLetter() } &&
+                !isPublisher &&
+                line.length <= 40 &&
+                line.none { it.isDigit() }
+        }
+        return candidate?.trim()?.takeIf { it.isNotEmpty() }
+            ?.let { "第 $index 本 · $it" }
+            ?: "第 $index 本"
+    }
+
+    /**
+     * 登记一条目录。多本合集里，一本书内的条目要把 [parentIndex] 指向那本书的分组，
+     * 否则 [ChapterResolver.resolveRanges] 无从知道哪些章节属于哪本书，
+     * 分组范围就只剩它自己那一页（实测：第 1 本只占 P10-12，抽屉里折不起来）。
+     */
+    private fun add(
+        page: Int,
+        kind: ChapterKind,
+        title: String,
+        titleEn: String?,
+        parentIndex: Int = if (kind == ChapterKind.GROUP) Chapter.ROOT else currentGroupIndex,
+    ): Chapter? {
         val key = Regex("\\s+").replace(title.lowercase(), "")
         if (key.isEmpty() || !seenTitles.add(key)) return null
         val chapter = Chapter(
             index = chapters.size,
-            parentIndex = Chapter.ROOT,
-            level = 0,
+            parentIndex = parentIndex,
+            level = if (parentIndex == Chapter.ROOT) 0 else 1,
             kind = kind,
             title = title,
             titleEn = titleEn,
