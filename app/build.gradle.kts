@@ -1,9 +1,22 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
 }
+
+// ---------------------------------------------------------------- 签名
+// 密钥与口令放在工程根目录的 keystore.properties（已 gitignore，绝不入库）。
+// 这个文件不存在时（比如别人 clone 下来），release 就退回未签名包，
+// 而不是让构建直接失败——debug 构建任何时候都不受影响。
+val keystorePropsFile = rootProject.file("keystore.properties")
+val keystoreProps = Properties().apply {
+    if (keystorePropsFile.exists()) keystorePropsFile.inputStream().use { load(it) }
+}
+val hasReleaseSigning = keystorePropsFile.exists() &&
+    keystoreProps.getProperty("storeFile") != null
 
 android {
     namespace = "com.novelreader.pdf"
@@ -20,6 +33,18 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    signingConfigs {
+        create("release") {
+            if (hasReleaseSigning) {
+                // storeFile 的路径写在 keystore.properties 里，相对工程根目录
+                storeFile = rootProject.file(keystoreProps.getProperty("storeFile"))
+                storePassword = keystoreProps.getProperty("storePassword")
+                keyAlias = keystoreProps.getProperty("keyAlias")
+                keyPassword = keystoreProps.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         debug {
             isMinifyEnabled = false
@@ -31,6 +56,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            // 没有 keystore.properties 时不设签名，产出 -unsigned 包（行为与之前一致）
+            if (hasReleaseSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 

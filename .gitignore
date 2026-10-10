@@ -21,3 +21,9 @@ output.json
 
 # 构建验证用的临时工作区（本机自包含工具链，不属于工程）
 ../.tools/
+
+# 签名密钥与口令：绝不入库
+keystore.properties
+keystore/
+*.jks
+*.keystore
