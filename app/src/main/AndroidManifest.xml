@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      导入走 SAF（ACTION_OPEN_DOCUMENT）+ 应用私有缓存副本，零敏感权限。
+      仅当你要改用「直接读取外部存储路径」模式时，Android 12 及以下才需要该权限。
+    -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <application
+        android:name=".NovelReaderApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NovelReader"
+        tools:targetApi="35">
+
+        <!-- 书架 / 导入入口 -->
+        <activity
+            android:name=".ui.shelf.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Reader 用 configChanges 自行兜住旋转/分屏，避免重建后重新解析整本 PDF
+          （2278 页的书虫合集重建一次要好几秒）；即便真被系统重建，
+          onPause/onStop 的进度落盘也能保证续读位置不丢。
+        -->
+        <activity
+            android:name=".ui.reader.ReaderActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|keyboard|uiMode|density|fontScale"
+            android:exported="false"
+            android:theme="@style/Theme.NovelReader.Reader" />
+
+        <!-- 用于分享导出的章节 JSON（无需任何存储权限） -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

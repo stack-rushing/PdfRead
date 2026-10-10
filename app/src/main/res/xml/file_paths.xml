@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 导出的目录 JSON：getExternalFilesDir(null)/chapters/xxx.json -->
+    <external-files-path
+        name="chapters_external"
+        path="chapters/" />
+    <!-- 兜底：内部私有目录 -->
+    <files-path
+        name="chapters_internal"
+        path="chapters/" />
+</paths>

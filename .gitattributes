@@ -1,0 +1,18 @@
+# 换行统一：仓库里一律存 LF，避免 Windows/Linux 之间来回改行尾
+* text=auto eol=lf
+
+# Windows 批处理必须是 CRLF
+*.bat text eol=crlf
+
+# 二进制（禁止换行转换与 diff）
+*.png binary
+*.jpg binary
+*.jar binary
+*.apk binary
+*.aar binary
+*.so binary
+*.ttf binary
+
+# 生成物不参与语言统计
+app/schemas/** linguist-generated
+app/src/test/resources/*.tsv linguist-vendored

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">小说式 PDF 阅读器</string>
+
+    <!-- 通用 -->
+    <string name="reader_ok">确定</string>
+    <string name="reader_cancel">取消</string>
+
+    <!-- 书架 -->
+    <string name="shelf_title">我的书架</string>
+    <string name="shelf_import">导入 PDF</string>
+    <string name="shelf_empty">书架还是空的\n点右下角「导入 PDF」开始阅读</string>
+    <string name="shelf_page_format">第 %1$d / %2$d 页 · %3$d%%</string>
+    <string name="shelf_not_opened">尚未打开</string>
+    <string name="shelf_delete">从书架移除</string>
+    <string name="shelf_delete_with_file_confirm">要连本地副本一起删除吗？\n\n确定 = 同时删除 PDF 本地副本（释放磁盘空间）\n取消 = 只移除书架记录，文件保留</string>
+    <string name="shelf_importing">正在导入…</string>
+
+    <!-- 阅读器 -->
+    <string name="reader_back">返回</string>
+    <string name="reader_toc">目录</string>
+    <string name="reader_night_mode">夜间模式</string>
+    <string name="reader_more">更多</string>
+    <string name="reader_prev_chapter">上一章</string>
+    <string name="reader_next_chapter">下一章</string>
+    <string name="reader_prev_page">上一页</string>
+    <string name="reader_next_page">下一页</string>
+    <string name="reader_page_indicator">%1$d / %2$d</string>
+    <string name="reader_page_indicator_percent">%1$d / %2$d · %3$d%%</string>
+    <string name="reader_loading">正在打开 PDF…</string>
+    <string name="reader_chapter_unknown">未识别章节</string>
+    <string name="reader_menu_retry">重新加载</string>
+    <string name="reader_error_title">打开失败</string>
+    <string name="reader_renderer_need_local">需要本地副本才能打开，请检查文件是否仍可访问</string>
+    <string name="reader_renderer_failed">PDF 打开失败：%1$s（加密 PDF 暂不支持）</string>
+
+    <!-- 目录生成 -->
+    <string name="reader_menu_toc_auto">自动生成目录</string>
+    <string name="reader_menu_toc_outline">仅解析 PDF 内置书签</string>
+    <string name="reader_menu_toc_ocr_reanchor">OCR 重锚定章节页码（较慢）</string>
+    <string name="reader_menu_toc_ocr_scan">OCR 扫描页眉生成目录（最慢）</string>
+    <string name="reader_menu_export_chapters">导出目录 JSON</string>
+    <string name="reader_menu_toc_clear">清除目录</string>
+    <string name="reader_toc_clear_confirm">清除后可以重新生成；本地 JSON 覆盖文件也会被清掉。</string>
+    <string name="reader_toc_generate">生成目录</string>
+    <string name="reader_toc_export_short">导出</string>
+    <string name="reader_toc_clear_short">清除</string>
+    <string name="reader_toc_empty_hint">还没有目录。\n\n点「生成目录」：有内置书签的直接读；没有书签的扫描版会用 OCR 识别页眉。</string>
+    <string name="reader_toc_source">%1$s · %2$d 章</string>
+    <string name="reader_toc_progress">%1$s %2$d/%3$d（%4$d%%）</string>
+    <string name="reader_toc_confirm_title">开始生成目录</string>
+    <string name="reader_toc_confirm_message">模式：%1$s\n\n这本书共 %2$d 页。OCR 模式会按页渲染并识别页眉，可能持续一到几分钟，期间可以继续读书，也可以随时取消。</string>
+    <string name="reader_toc_mode_auto">自动：先用内置书签，没有再用 OCR</string>
+    <string name="reader_toc_mode_outline">只读内置书签（秒级，但页码可能漂移）</string>
+    <string name="reader_toc_mode_reanchor">OCR 重锚定页码（有书签、页码不准时用）</string>
+    <string name="reader_toc_mode_scan">OCR 全页眉扫描（扫描件、无书签时用）</string>
+    <string name="reader_exported">目录已导出到 %1$s</string>
+    <string name="reader_share">分享</string>
+    <string name="reader_share_chooser">分享目录 JSON</string>
+    <string name="reader_manual_hint">目录不准？把导出的 JSON 改好后放回 %1$s 即可覆盖（优先级最高）</string>
+    <string name="reader_chapters_of">目录 · %1$s</string>
+
+    <!-- 章节项 -->
+    <string name="chapter_expand">展开或折叠</string>
+    <string name="chapter_page_range">P%1$d–%2$d</string>
+    <string name="chapter_group_pages">P%1$d–%2$d</string>
+    <string name="chapter_page_single">P%1$d</string>
+</resources>

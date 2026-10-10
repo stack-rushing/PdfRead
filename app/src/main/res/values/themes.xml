@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.NovelReader" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorPrimaryDark">@color/brand_primary_dark</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
+    </style>
+
+    <!--
+      阅读器主题：把 windowBackground 换成纸张灰，
+      这样 PDF 页面之间的间隙不会出现刺眼的纯白闪烁。
+    -->
+    <style name="Theme.NovelReader.Reader" parent="Theme.NovelReader">
+        <item name="android:windowBackground">@color/reader_background</item>
+        <item name="android:windowContentTransitions">false</item>
+    </style>
+
+    <!-- parent= 显式留空：名字里的点会被 AAPT 当成隐式父样式（Widget.NovelReader），
+         那个父样式并不存在，会导致资源链接失败。 -->
+    <style name="Widget.NovelReader.PanelIcon" parent="">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+</resources>

@@ -1,0 +1,23 @@
+# Gradle / Android
+.gradle/
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+output.json
+
+# KSP / Room：schema 是要入库的（写 Migration 时要用），所以不忽略 app/schemas/
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# 构建验证用的临时工作区（本机自包含工具链，不属于工程）
+../.tools/

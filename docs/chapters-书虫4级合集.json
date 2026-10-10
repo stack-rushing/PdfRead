@@ -1,0 +1,4059 @@
+{
+ "bookId": null,
+ "title": "书虫·牛津英汉双语读物（第4级全）",
+ "pageNumberBase": 1,
+ "source": "PDF_OUTLINE_REANCHORED",
+ "chapters": [
+  {
+   "titleZh": "总目录",
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "startPage": 2,
+   "confidence": 30
+  },
+  {
+   "titleZh": "书虫·牛津英汉双语读物（第4级上）",
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "GROUP",
+   "startPage": 4,
+   "confidence": 100
+  },
+  {
+   "titleZh": "目录",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "CHAPTER",
+   "startPage": 4,
+   "confidence": 30
+  },
+  {
+   "titleZh": "巴斯克维尔猎犬",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 14,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 14,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 15,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 15,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 15,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1 The Case Begins",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 19,
+   "confidence": 90
+  },
+  {
+   "titleZh": "1 这宗案件开始了",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 21,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2 The Baskerville Papers",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 23,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2 巴斯克维尔家族的手稿",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 28,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3 How Sir Charles Died",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 31,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3 查尔斯爵士是如何死的",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 36,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4 The Problem",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 40,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4 疑难问题",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 47,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5 Sir Henry Baskerville",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 52,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5 亨利·巴斯克维尔爵士",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 56,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6 More Mystery",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 59,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6 更大的疑团",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 65,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7 Baskerville Hall",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 69,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7 巴斯克维尔庄园",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 72,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8 The Stapletons of Pen House",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 75,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8 格林盆宅邸的斯台普顿兄妹",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 82,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9 The Escaped Prisoner",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 87,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9 出逃的囚犯",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 93,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10 The Letter",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 98,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10 一封信件",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 104,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11 Laura Lyons",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 109,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11 劳拉·莱昂丝",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 112,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12 The Man on the Moor",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 115,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12 沼地上的那个人",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 119,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13 Too Late",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 122,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13 太晚了",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 127,
+   "confidence": 90
+  },
+  {
+   "titleZh": "14 Death on the Moor",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 131,
+   "confidence": 90
+  },
+  {
+   "titleZh": "14 沼地上的一起死亡事件",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 137,
+   "confidence": 90
+  },
+  {
+   "titleZh": "15 The Trap",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 142,
+   "confidence": 90
+  },
+  {
+   "titleZh": "15 陷阱",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 147,
+   "confidence": 90
+  },
+  {
+   "titleZh": "16 The Hound of the Baskervilles",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 151,
+   "confidence": 90
+  },
+  {
+   "titleZh": "16 巴斯克维尔猎犬",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 155,
+   "confidence": 90
+  },
+  {
+   "titleZh": "17 The Search for the Murderer",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 158,
+   "confidence": 90
+  },
+  {
+   "titleZh": "17 搜寻杀人凶手",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 164,
+   "confidence": 90
+  },
+  {
+   "titleZh": "18 Looking Back",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 168,
+   "confidence": 90
+  },
+  {
+   "titleZh": "18 回顾",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 173,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 174,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 3,
+   "kind": "CHAPTER",
+   "startPage": 174,
+   "confidence": 30
+  },
+  {
+   "titleZh": "不平静的坟墓",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 175,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 175,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 176,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 177,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 177,
+   "confidence": 30
+  },
+  {
+   "titleZh": "The Picture",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 178,
+   "confidence": 90
+  },
+  {
+   "titleZh": "画作",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 192,
+   "confidence": 30
+  },
+  {
+   "titleZh": "Rats",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 206,
+   "confidence": 90
+  },
+  {
+   "titleZh": "老鼠",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 212,
+   "confidence": 30
+  },
+  {
+   "titleZh": "Casting the Runes",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 219,
+   "confidence": 90
+  },
+  {
+   "titleZh": "运用如尼魔文",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 239,
+   "confidence": 90
+  },
+  {
+   "titleZh": "The Experiment",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 254,
+   "confidence": 90
+  },
+  {
+   "titleZh": "实验",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 262,
+   "confidence": 30
+  },
+  {
+   "titleZh": "'Oh, Whistle, and I'll Come to You, My Boy'",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 269,
+   "confidence": 90
+  },
+  {
+   "titleZh": "“噢，朋友，你一吹哨，我就会来到你身边”",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 285,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 288,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 46,
+   "kind": "CHAPTER",
+   "startPage": 291,
+   "confidence": 30
+  },
+  {
+   "titleZh": "三怪客泛舟记",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 294,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 294,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 296,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 299,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 302,
+   "confidence": 30
+  },
+  {
+   "titleZh": "chapter1 We decide to go on holiday",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 305,
+   "confidence": 90
+  },
+  {
+   "titleZh": "决定去渡假",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 311,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter2 We start to make plans",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 316,
+   "confidence": 90
+  },
+  {
+   "titleZh": "开始订计划",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 321,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter3 We decide what to take",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 325,
+   "confidence": 90
+  },
+  {
+   "titleZh": "准备行装",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 329,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter4 We pack",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 332,
+   "confidence": 90
+  },
+  {
+   "titleZh": "收拾行装",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 336,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter5 We start our holiday",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 340,
+   "confidence": 90
+  },
+  {
+   "titleZh": "开始度假",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 343,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter6 On the river",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 346,
+   "confidence": 90
+  },
+  {
+   "titleZh": "在河上",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 350,
+   "confidence": 30
+  },
+  {
+   "titleZh": "chapter7 Harris gets angry",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 353,
+   "confidence": 90
+  },
+  {
+   "titleZh": "哈里斯生气了",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 357,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter8 George starts work",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 360,
+   "confidence": 90
+  },
+  {
+   "titleZh": "乔治开始干活",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 364,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter9 Our first night on the boat",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 368,
+   "confidence": 90
+  },
+  {
+   "titleZh": "在船上的第一夜",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 374,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter10 Our first morning",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 379,
+   "confidence": 90
+  },
+  {
+   "titleZh": "第一天早晨",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 386,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter11 Hotels and tinned fruit",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 391,
+   "confidence": 90
+  },
+  {
+   "titleZh": "客栈和水果罐头",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 399,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter12 Montmorency and the cat",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 405,
+   "confidence": 90
+  },
+  {
+   "titleZh": "“元帅”和猫",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 409,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter13 Harris and the swans",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 413,
+   "confidence": 90
+  },
+  {
+   "titleZh": "哈里斯与天鹅",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 419,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter14 Work, washing, and fishing",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 424,
+   "confidence": 90
+  },
+  {
+   "titleZh": "干活、洗衣和钓鱼",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 430,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter15 On to Oxford",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 436,
+   "confidence": 90
+  },
+  {
+   "titleZh": "来到牛津",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 441,
+   "confidence": 90
+  },
+  {
+   "titleZh": "chapter16 The journey home",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 445,
+   "confidence": 90
+  },
+  {
+   "titleZh": "返航归家",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 450,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 454,
+   "confidence": 30
+  },
+  {
+   "titleZh": "Glossary",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 458,
+   "confidence": 90
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 63,
+   "kind": "CHAPTER",
+   "startPage": 459,
+   "confidence": 30
+  },
+  {
+   "titleZh": "三十九级台阶",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 461,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 461,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 462,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 463,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 465,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1．The man who died",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 466,
+   "confidence": 90
+  },
+  {
+   "titleZh": "死人",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 473,
+   "confidence": 30
+  },
+  {
+   "titleZh": "2．The milkman starts his travels",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 480,
+   "confidence": 90
+  },
+  {
+   "titleZh": "送奶员开始旅行",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 486,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．The hotel-owner",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 490,
+   "confidence": 90
+  },
+  {
+   "titleZh": "旅馆老板",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 499,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．The political candidate",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 506,
+   "confidence": 90
+  },
+  {
+   "titleZh": "政治候选人",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 513,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．The adventure of the roadman",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 518,
+   "confidence": 90
+  },
+  {
+   "titleZh": "修路人的奇遇",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 524,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．The bald writer",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 529,
+   "confidence": 90
+  },
+  {
+   "titleZh": "秃头作家",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 537,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．The fisherman",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 543,
+   "confidence": 90
+  },
+  {
+   "titleZh": "渔夫",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 549,
+   "confidence": 30
+  },
+  {
+   "titleZh": "8．The coming of the black stone",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 556,
+   "confidence": 90
+  },
+  {
+   "titleZh": "黑石来了",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 562,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．The thirty-nine steps",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 567,
+   "confidence": 90
+  },
+  {
+   "titleZh": "三十九级台阶",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 573,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10．Meetings by the sea",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 578,
+   "confidence": 90
+  },
+  {
+   "titleZh": "海边相遇",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 588,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 594,
+   "confidence": 30
+  },
+  {
+   "titleZh": "Glossary",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 599,
+   "confidence": 90
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 103,
+   "kind": "CHAPTER",
+   "startPage": 601,
+   "confidence": 30
+  },
+  {
+   "titleZh": "小妇人",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 602,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 602,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 603,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 605,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 607,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1．Four sisters",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 608,
+   "confidence": 90
+  },
+  {
+   "titleZh": "四姐妹",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 612,
+   "confidence": 30
+  },
+  {
+   "titleZh": "2．A Happy Christmas",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 616,
+   "confidence": 90
+  },
+  {
+   "titleZh": "快乐的圣诞节",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 621,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．The Laurence boy",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 625,
+   "confidence": 90
+  },
+  {
+   "titleZh": "劳伦斯家的男孩",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 631,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．The house next door",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 636,
+   "confidence": 90
+  },
+  {
+   "titleZh": "隔壁的房子",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 643,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．A surprise for Beth",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 649,
+   "confidence": 90
+  },
+  {
+   "titleZh": "白丝的惊喜",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 652,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．Amy in trouble",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 655,
+   "confidence": 90
+  },
+  {
+   "titleZh": "艾米遇到麻烦",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 660,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．Meg hears some gossip",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 664,
+   "confidence": 90
+  },
+  {
+   "titleZh": "麦格听到了闲言碎语",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 671,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．All play and no work",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 677,
+   "confidence": 90
+  },
+  {
+   "titleZh": "只有玩乐没有工作",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 682,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．Secrets",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 687,
+   "confidence": 90
+  },
+  {
+   "titleZh": "秘密",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 691,
+   "confidence": 30
+  },
+  {
+   "titleZh": "10．A telegram",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 695,
+   "confidence": 90
+  },
+  {
+   "titleZh": "一封电报",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 699,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11．Beth",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 702,
+   "confidence": 90
+  },
+  {
+   "titleZh": "白丝",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 706,
+   "confidence": 30
+  },
+  {
+   "titleZh": "12．Love and Mr Brooke",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 711,
+   "confidence": 90
+  },
+  {
+   "titleZh": "爱和布鲁克先生",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 714,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13．Laurie makes trouble and Jo makes peace",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 717,
+   "confidence": 90
+  },
+  {
+   "titleZh": "罗瑞惹麻烦 琼平息事端",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 724,
+   "confidence": 90
+  },
+  {
+   "titleZh": "14．Happier days",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 730,
+   "confidence": 90
+  },
+  {
+   "titleZh": "快乐的日子",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 739,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 741,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 131,
+   "kind": "CHAPTER",
+   "startPage": 744,
+   "confidence": 30
+  },
+  {
+   "titleZh": "克兰福德",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 746,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 746,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 748,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 750,
+   "confidence": 30
+  },
+  {
+   "titleZh": "内容简介",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 753,
+   "confidence": 30
+  },
+  {
+   "titleZh": "CRANFORD",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 755,
+   "confidence": 90
+  },
+  {
+   "titleZh": "1．Our society",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 756,
+   "confidence": 90
+  },
+  {
+   "titleZh": "我们的社会",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 762,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．The captain",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 767,
+   "confidence": 90
+  },
+  {
+   "titleZh": "上尉",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 773,
+   "confidence": 30
+  },
+  {
+   "titleZh": "3．A love-affair of long ago",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 780,
+   "confidence": 90
+  },
+  {
+   "titleZh": "很久以前的一段恋情",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 788,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Poor Peter",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 796,
+   "confidence": 90
+  },
+  {
+   "titleZh": "可怜的彼得",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 803,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．'Your ladyship'",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 809,
+   "confidence": 90
+  },
+  {
+   "titleZh": "“尊敬的夫人”",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 817,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．Signor Brunoni",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 825,
+   "confidence": 90
+  },
+  {
+   "titleZh": "布鲁诺尼先生",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 832,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．Sudden news",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 838,
+   "confidence": 90
+  },
+  {
+   "titleZh": "突然的消息",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 845,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．True friends",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 851,
+   "confidence": 90
+  },
+  {
+   "titleZh": "真正的朋友",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 859,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．A happy return",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 866,
+   "confidence": 90
+  },
+  {
+   "titleZh": "幸福归来",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 873,
+   "confidence": 90
+  },
+  {
+   "titleZh": "ACTIVITIES：Before Reading",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 876,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES：While Reading",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 878,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES：After Reading",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 881,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 166,
+   "kind": "CHAPTER",
+   "startPage": 884,
+   "confidence": 30
+  },
+  {
+   "titleZh": "华盛顿广场",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 886,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 886,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 889,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 892,
+   "confidence": 30
+  },
+  {
+   "titleZh": "内容简介",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 894,
+   "confidence": 30
+  },
+  {
+   "titleZh": "WASHINGTON SQUARE",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 897,
+   "confidence": 90
+  },
+  {
+   "titleZh": "1．Poor Catherine",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 898,
+   "confidence": 90
+  },
+  {
+   "titleZh": "可怜的凯瑟琳",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 904,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．A handsome young man",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 909,
+   "confidence": 90
+  },
+  {
+   "titleZh": "一个英俊的年轻人",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 917,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．Who is Morris Townsend?",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 924,
+   "confidence": 90
+  },
+  {
+   "titleZh": "莫里斯·汤森是谁？",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 931,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Morris Townsend looks for a position",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 937,
+   "confidence": 90
+  },
+  {
+   "titleZh": "莫里斯·汤森求职",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 945,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．Doctor Sloper decides",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 952,
+   "confidence": 90
+  },
+  {
+   "titleZh": "斯洛珀医生的决定",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 961,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．Catherine tries to be good",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 969,
+   "confidence": 90
+  },
+  {
+   "titleZh": "凯瑟琳努力做好",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 977,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．Catherine decides",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 984,
+   "confidence": 90
+  },
+  {
+   "titleZh": "凯瑟琳的决定",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 992,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．The last parting",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 999,
+   "confidence": 90
+  },
+  {
+   "titleZh": "最后的离别",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 1010,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．Morris returns",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 1020,
+   "confidence": 90
+  },
+  {
+   "titleZh": "莫里斯归来",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 1027,
+   "confidence": 90
+  },
+  {
+   "titleZh": "ACTIVITIES: Before Reading",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 1029,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: While Reading",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 1032,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: After Reading",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 1034,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 194,
+   "kind": "CHAPTER",
+   "startPage": 1037,
+   "confidence": 30
+  },
+  {
+   "titleZh": "织工马南",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 1039,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1039,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1042,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1044,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1047,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1．Silas Marner, past and present",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1049,
+   "confidence": 90
+  },
+  {
+   "titleZh": "马南的过去和现在",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1058,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．Godfrey and Dunstan Cass",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1065,
+   "confidence": 90
+  },
+  {
+   "titleZh": "戈弗雷·凯斯和邓斯坦·凯斯",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1073,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．Where is Silas's gold?",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1079,
+   "confidence": 90
+  },
+  {
+   "titleZh": "西拉斯的金子哪儿去了？",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1084,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Godfrey is in trouble",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1089,
+   "confidence": 90
+  },
+  {
+   "titleZh": "戈弗雷有麻烦了",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1095,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．Silas's neighbours",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1100,
+   "confidence": 90
+  },
+  {
+   "titleZh": "西拉斯的邻居们",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1106,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．The New Year's Eve dance",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1111,
+   "confidence": 90
+  },
+  {
+   "titleZh": "新年舞会",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1118,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．Silas finds his 'gold'",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1123,
+   "confidence": 90
+  },
+  {
+   "titleZh": "西拉斯找到了他的“金子”",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1131,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．Eppie has grown up",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1137,
+   "confidence": 90
+  },
+  {
+   "titleZh": "埃比长大了",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1142,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．Godfrey confesses at last",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1147,
+   "confidence": 90
+  },
+  {
+   "titleZh": "戈弗雷终于坦白了",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1151,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10．Eppie has to decide",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1155,
+   "confidence": 90
+  },
+  {
+   "titleZh": "埃比需要做出选择",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1162,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1164,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 222,
+   "kind": "CHAPTER",
+   "startPage": 1166,
+   "confidence": 30
+  },
+  {
+   "titleZh": "化身博士",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "GROUP",
+   "startPage": 1168,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1168,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1171,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1173,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1175,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1．The mysterious door",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1177,
+   "confidence": 90
+  },
+  {
+   "titleZh": "一扇神秘的门",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1183,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．In search of Mr Hyde",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1187,
+   "confidence": 90
+  },
+  {
+   "titleZh": "寻找海德先生",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1194,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．The Carew murder",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1199,
+   "confidence": 90
+  },
+  {
+   "titleZh": "卡鲁命案",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1203,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Doctor Jekyll receives a letter",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1206,
+   "confidence": 90
+  },
+  {
+   "titleZh": "杰基尔博士收到一封信",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1212,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．The death of a friend",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1216,
+   "confidence": 90
+  },
+  {
+   "titleZh": "朋友之死",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1221,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．The face at the window",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1225,
+   "confidence": 90
+  },
+  {
+   "titleZh": "窗户上的脸",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1228,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．The last night",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1231,
+   "confidence": 90
+  },
+  {
+   "titleZh": "最后一夜",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1243,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．Doctor Lanyon's letter",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1252,
+   "confidence": 90
+  },
+  {
+   "titleZh": "兰宁医生的信",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1260,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．Doctor Jekyll's confession",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1264,
+   "confidence": 90
+  },
+  {
+   "titleZh": "杰基尔博士的忏悔",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1277,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1280,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 249,
+   "kind": "CHAPTER",
+   "startPage": 1284,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 1,
+   "parentIndex": 1,
+   "kind": "CHAPTER",
+   "startPage": 1287,
+   "confidence": 30
+  },
+  {
+   "titleZh": "书虫·牛津英汉双语读物（第4级下）",
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "GROUP",
+   "startPage": 1290,
+   "confidence": 100
+  },
+  {
+   "titleZh": "目录",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "CHAPTER",
+   "startPage": 1290,
+   "confidence": 30
+  },
+  {
+   "titleZh": "双城记",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "GROUP",
+   "startPage": 1294,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1294,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1297,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1300,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1304,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1 The road to Paris—1775",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1307,
+   "confidence": 90
+  },
+  {
+   "titleZh": "去巴黎的路——1775年",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1311,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2 A wine-shop in Paris",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1314,
+   "confidence": 90
+  },
+  {
+   "titleZh": "巴黎的一家酒店",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1317,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3 A trial in London—1780",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1320,
+   "confidence": 90
+  },
+  {
+   "titleZh": "伦敦的一次审判——1780年",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1327,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4 The Marquis of Evrémonde",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1332,
+   "confidence": 90
+  },
+  {
+   "titleZh": "埃弗蒙侯爵",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1337,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5 Two men speak of love",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1341,
+   "confidence": 90
+  },
+  {
+   "titleZh": "两个男人谈论爱情",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1348,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6 Stormy years in France",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1354,
+   "confidence": 90
+  },
+  {
+   "titleZh": "法国的暴风雨年代",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1361,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7 A call for help",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1366,
+   "confidence": 90
+  },
+  {
+   "titleZh": "求救",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1370,
+   "confidence": 30
+  },
+  {
+   "titleZh": "8 In the hands of the citizens",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1375,
+   "confidence": 90
+  },
+  {
+   "titleZh": "在公民们的手里",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1383,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9 The spy",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1389,
+   "confidence": 90
+  },
+  {
+   "titleZh": "间谍",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1393,
+   "confidence": 30
+  },
+  {
+   "titleZh": "10 The secret paper",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1398,
+   "confidence": 90
+  },
+  {
+   "titleZh": "秘密纸条",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1404,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11 Madame Defarge's revenge",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1408,
+   "confidence": 90
+  },
+  {
+   "titleZh": "得法热夫人的报复",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1412,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12 A change of clothes",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1415,
+   "confidence": 90
+  },
+  {
+   "titleZh": "互换衣服",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1419,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13 The last goodbyes",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1423,
+   "confidence": 90
+  },
+  {
+   "titleZh": "最后的道别",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1430,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1432,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 277,
+   "kind": "CHAPTER",
+   "startPage": 1434,
+   "confidence": 30
+  },
+  {
+   "titleZh": "格列佛游记",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "GROUP",
+   "startPage": 1436,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1436,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1438,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1440,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1442,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1．A voyage to Lilliput",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1444,
+   "confidence": 90
+  },
+  {
+   "titleZh": "到利力浦特",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1451,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．Life in Lilliput",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1455,
+   "confidence": 90
+  },
+  {
+   "titleZh": "在利力浦特的生活",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1461,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．Lilliput at war",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1466,
+   "confidence": 90
+  },
+  {
+   "titleZh": "利力浦特的战争",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1470,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Gulliver escapes from Lilliput",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1473,
+   "confidence": 90
+  },
+  {
+   "titleZh": "格列佛逃离利力浦特",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1479,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．A voyage to Brobdingnag",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1483,
+   "confidence": 90
+  },
+  {
+   "titleZh": "到布罗卜丁奈格",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1487,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．Gulliver and his master",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1490,
+   "confidence": 90
+  },
+  {
+   "titleZh": "格列佛和他的主人",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1495,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．At the King's palace",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1498,
+   "confidence": 90
+  },
+  {
+   "titleZh": "在王宫里",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1504,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．More adventures in Brobdingnag",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1508,
+   "confidence": 90
+  },
+  {
+   "titleZh": "在布罗卜丁奈格的其他经历",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1515,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．Gulliver escapes from Brobdingnag",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1520,
+   "confidence": 90
+  },
+  {
+   "titleZh": "格列佛逃离布罗卜丁奈格",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1524,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10．The flying island of Laputa",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1527,
+   "confidence": 90
+  },
+  {
+   "titleZh": "勒皮他飞岛",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1532,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11．Glubbdubdrib and Luggnagg",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1536,
+   "confidence": 90
+  },
+  {
+   "titleZh": "格勒大锥和拉格奈格",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1541,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12．A voyage to the country of the Houyhnhnmes",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1545,
+   "confidence": 90
+  },
+  {
+   "titleZh": "到慧骃国的航行",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1554,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1556,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 310,
+   "kind": "CHAPTER",
+   "startPage": 1558,
+   "confidence": 30
+  },
+  {
+   "titleZh": "金银岛",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "GROUP",
+   "startPage": 1560,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1560,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1563,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1565,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简 介",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1567,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1 The old seaman",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1569,
+   "confidence": 90
+  },
+  {
+   "titleZh": "老海员",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1573,
+   "confidence": 30
+  },
+  {
+   "titleZh": "2 Black Dog",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1576,
+   "confidence": 90
+  },
+  {
+   "titleZh": "黑狗",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1579,
+   "confidence": 30
+  },
+  {
+   "titleZh": "3 The black spot",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1582,
+   "confidence": 90
+  },
+  {
+   "titleZh": "黑券",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1585,
+   "confidence": 30
+  },
+  {
+   "titleZh": "4 The sea-chest",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1588,
+   "confidence": 90
+  },
+  {
+   "titleZh": "水手箱",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1594,
+   "confidence": 30
+  },
+  {
+   "titleZh": "5 I go to Bristol",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1600,
+   "confidence": 90
+  },
+  {
+   "titleZh": "我去布里斯托尔",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1605,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6 The ship and its men",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1609,
+   "confidence": 90
+  },
+  {
+   "titleZh": "船和船员",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1612,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7 The apple barrel",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1615,
+   "confidence": 90
+  },
+  {
+   "titleZh": "苹果桶",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1621,
+   "confidence": 30
+  },
+  {
+   "titleZh": "8 Treasure Island",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1627,
+   "confidence": 90
+  },
+  {
+   "titleZh": "金银岛",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1631,
+   "confidence": 30
+  },
+  {
+   "titleZh": "9 The man of the island",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1634,
+   "confidence": 90
+  },
+  {
+   "titleZh": "岛中人",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1638,
+   "confidence": 30
+  },
+  {
+   "titleZh": "10 Inside the stockade",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1641,
+   "confidence": 90
+  },
+  {
+   "titleZh": "在寨子里",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1648,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11 Sea adventure",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1653,
+   "confidence": 90
+  },
+  {
+   "titleZh": "海上历险",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1658,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12 Israel Hands",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1662,
+   "confidence": 90
+  },
+  {
+   "titleZh": "伊斯莱尔·汉兹",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1668,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13 A prisoner of the enemy",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1672,
+   "confidence": 90
+  },
+  {
+   "titleZh": "敌人的俘虏",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1678,
+   "confidence": 90
+  },
+  {
+   "titleZh": "14 Looking for the treasure",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1683,
+   "confidence": 90
+  },
+  {
+   "titleZh": "寻宝记",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1687,
+   "confidence": 30
+  },
+  {
+   "titleZh": "15 End of an adventure",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1692,
+   "confidence": 90
+  },
+  {
+   "titleZh": "寻宝结局",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1697,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1699,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 341,
+   "kind": "CHAPTER",
+   "startPage": 1701,
+   "confidence": 30
+  },
+  {
+   "titleZh": "黑骏马",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "GROUP",
+   "startPage": 1703,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1703,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1704,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1706,
+   "confidence": 30
+  },
+  {
+   "titleZh": "简介",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1708,
+   "confidence": 30
+  },
+  {
+   "titleZh": "1．My first home",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1710,
+   "confidence": 90
+  },
+  {
+   "titleZh": "1 我的第一个家",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1714,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．Birtwick Park",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1717,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2 伯特威克庄园",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1724,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．Ginger's story",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1729,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3 金儿的故事",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1733,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Kindness and cruelty",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1736,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4 善意和冷酷",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1740,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．The storm",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1743,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5 暴风雨",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1747,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．The fire",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1751,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6 大火",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1755,
+   "confidence": 30
+  },
+  {
+   "titleZh": "7．Joe Green",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1759,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7 乔·格林",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1765,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．Earlshall Park",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1770,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8 沙尔伯爵庄园",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1777,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．The accident and new masters",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1782,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9 事故和新主人",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1787,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10．A London cab horse",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1791,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10 在伦敦拉出租马车",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1797,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11．Goodbye to old friends",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1802,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11 告别老友",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1809,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12．Hard times",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1815,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12 苦日子",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1819,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13．My last home",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1823,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13 我最后的家",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1827,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Exercises",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1829,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 378,
+   "kind": "CHAPTER",
+   "startPage": 1830,
+   "confidence": 30
+  },
+  {
+   "titleZh": "红字",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "GROUP",
+   "startPage": 1832,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1832,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1834,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1836,
+   "confidence": 30
+  },
+  {
+   "titleZh": "内容简介",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1837,
+   "confidence": 30
+  },
+  {
+   "titleZh": "THE SCARLET LETTER",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1839,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Salem, my home town...",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1841,
+   "confidence": 90
+  },
+  {
+   "titleZh": "塞勒姆，我的家乡",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1844,
+   "confidence": 90
+  },
+  {
+   "titleZh": "1．Hester Prynne's shame",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1845,
+   "confidence": 90
+  },
+  {
+   "titleZh": "赫斯特·普林的耻辱",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1853,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．Roger Chillingworth's secret",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1861,
+   "confidence": 90
+  },
+  {
+   "titleZh": "罗杰·奇林沃思的秘密",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1865,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．A fatherless child",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1869,
+   "confidence": 90
+  },
+  {
+   "titleZh": "没有父亲的孩子",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1876,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．A man sent by the Devil",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1883,
+   "confidence": 90
+  },
+  {
+   "titleZh": "魔鬼派来的人",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1890,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．A night on the scaffold",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1896,
+   "confidence": 90
+  },
+  {
+   "titleZh": "绞刑台上的一晚",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1903,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．Hester meets the enemy",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1909,
+   "confidence": 90
+  },
+  {
+   "titleZh": "赫斯特遇到敌人",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1915,
+   "confidence": 90
+  },
+  {
+   "titleZh": "A walk in the forest",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1920,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．林中散步",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1925,
+   "confidence": 90
+  },
+  {
+   "titleZh": "Hope for the future",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1930,
+   "confidence": 90
+  },
+  {
+   "titleZh": "希望",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1937,
+   "confidence": 30
+  },
+  {
+   "titleZh": "9．Escape",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1944,
+   "confidence": 90
+  },
+  {
+   "titleZh": "逃亡",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1952,
+   "confidence": 30
+  },
+  {
+   "titleZh": "10．Hester Prynne's sadness",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1961,
+   "confidence": 90
+  },
+  {
+   "titleZh": "赫斯特·普林的悲伤",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1964,
+   "confidence": 90
+  },
+  {
+   "titleZh": "ACTIVITIES: Before Reading",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1966,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: While Reading",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1968,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: After Reading",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1970,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 411,
+   "kind": "CHAPTER",
+   "startPage": 1972,
+   "confidence": 30
+  },
+  {
+   "titleZh": "吉姆老爷",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "GROUP",
+   "startPage": 1974,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1974,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1976,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1978,
+   "confidence": 30
+  },
+  {
+   "titleZh": "内容简介",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1980,
+   "confidence": 30
+  },
+  {
+   "titleZh": "LORD JIM",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1982,
+   "confidence": 90
+  },
+  {
+   "titleZh": "1．Jim's early life",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1983,
+   "confidence": 90
+  },
+  {
+   "titleZh": "吉姆的早年生活",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1991,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．Marlow meets Jim",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 1997,
+   "confidence": 90
+  },
+  {
+   "titleZh": "马洛与吉姆相识",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2005,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．Jim tells his story",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2011,
+   "confidence": 90
+  },
+  {
+   "titleZh": "吉姆讲述自己的故事",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2018,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Marlow offers to help",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2025,
+   "confidence": 90
+  },
+  {
+   "titleZh": "马洛伸出援手",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2033,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．Jim goes to Patusan",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2041,
+   "confidence": 90
+  },
+  {
+   "titleZh": "吉姆去帕图桑",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2050,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．Marlow visits Jim",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2059,
+   "confidence": 90
+  },
+  {
+   "titleZh": "马洛看望吉姆",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2070,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．Jim in love, and in danger",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2080,
+   "confidence": 90
+  },
+  {
+   "titleZh": "爱与险境中的吉姆",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2090,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．The end of the story",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2099,
+   "confidence": 90
+  },
+  {
+   "titleZh": "结局",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2103,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: Before Reading",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2107,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: While Reading",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2110,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: After Reading",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2114,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 443,
+   "kind": "CHAPTER",
+   "startPage": 2118,
+   "confidence": 30
+  },
+  {
+   "titleZh": "洛娜·杜恩",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "GROUP",
+   "startPage": 2122,
+   "confidence": 100
+  },
+  {
+   "titleZh": "封面",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2122,
+   "confidence": 30
+  },
+  {
+   "titleZh": "扉页",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2126,
+   "confidence": 30
+  },
+  {
+   "titleZh": "版权页",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2129,
+   "confidence": 30
+  },
+  {
+   "titleZh": "内容简介",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2133,
+   "confidence": 30
+  },
+  {
+   "titleZh": "LORNA DOONE",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2137,
+   "confidence": 90
+  },
+  {
+   "titleZh": "1．The end of school days",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2139,
+   "confidence": 90
+  },
+  {
+   "titleZh": "校园生活的结束",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2145,
+   "confidence": 90
+  },
+  {
+   "titleZh": "2．A boy and a girl",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2150,
+   "confidence": 90
+  },
+  {
+   "titleZh": "少年偶遇",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2154,
+   "confidence": 90
+  },
+  {
+   "titleZh": "3．Back to Doone valley",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2157,
+   "confidence": 90
+  },
+  {
+   "titleZh": "重返杜恩山谷",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2162,
+   "confidence": 90
+  },
+  {
+   "titleZh": "4．Lorna's story",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2167,
+   "confidence": 90
+  },
+  {
+   "titleZh": "洛娜的故事",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2170,
+   "confidence": 90
+  },
+  {
+   "titleZh": "5．To London",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2173,
+   "confidence": 90
+  },
+  {
+   "titleZh": "伦敦之行",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2177,
+   "confidence": 90
+  },
+  {
+   "titleZh": "6．Lorna's new troubles",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2181,
+   "confidence": 90
+  },
+  {
+   "titleZh": "洛娜的新麻烦",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2187,
+   "confidence": 90
+  },
+  {
+   "titleZh": "7．Lorna leaves the valley",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2193,
+   "confidence": 90
+  },
+  {
+   "titleZh": "洛娜逃离山谷",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2197,
+   "confidence": 90
+  },
+  {
+   "titleZh": "8．The attack",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2202,
+   "confidence": 90
+  },
+  {
+   "titleZh": "农庄遭袭",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2208,
+   "confidence": 90
+  },
+  {
+   "titleZh": "9．Lorna's true story",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2213,
+   "confidence": 90
+  },
+  {
+   "titleZh": "洛娜的身世",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2217,
+   "confidence": 90
+  },
+  {
+   "titleZh": "10．Gone",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2221,
+   "confidence": 90
+  },
+  {
+   "titleZh": "洛娜离去",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2225,
+   "confidence": 90
+  },
+  {
+   "titleZh": "11．Tom Faggus in danger",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2228,
+   "confidence": 90
+  },
+  {
+   "titleZh": "汤姆遇险",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2233,
+   "confidence": 90
+  },
+  {
+   "titleZh": "12．Love and revenge",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2237,
+   "confidence": 90
+  },
+  {
+   "titleZh": "爱与复仇",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2245,
+   "confidence": 90
+  },
+  {
+   "titleZh": "13．The last battle",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2253,
+   "confidence": 90
+  },
+  {
+   "titleZh": "最后一仗",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2259,
+   "confidence": 90
+  },
+  {
+   "titleZh": "ACTIVITIES: Before Reading",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2259,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: While Reading",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2259,
+   "confidence": 30
+  },
+  {
+   "titleZh": "ACTIVITIES: After Reading",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2259,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 2,
+   "parentIndex": 469,
+   "kind": "CHAPTER",
+   "startPage": 2259,
+   "confidence": 30
+  },
+  {
+   "titleZh": "封底",
+   "level": 1,
+   "parentIndex": 275,
+   "kind": "CHAPTER",
+   "startPage": 2277,
+   "confidence": 30
+  }
+ ],
+ "_readme": "书虫·牛津英汉双语读物（第4级全）实测目录。由 NovelPdfReader 的目录生成算法（PDF 内置书签 + 按标题在页面文字中重锚定页码）离线跑出来的人工校对版，可直接导入 App。",
+ "_readme2": "用法：先在 App 里打开这本书 → 目录抽屉 →「导出」，得到 …/Android/data/com.novelreader.pdf/files/chapters/<bookId>.json，然后用本文件覆盖它的内容（bookId 字段可留空，App 以文件名定位）。",
+ "_readme3": "pageNumberBase=1 表示 startPage 与阅读器显示页码一致；kind=GROUP 的是分组（一本书/一个卷），confidence>=90 表示该章页码由页面标题重新锚定过，30 表示是插值估算。"
+}

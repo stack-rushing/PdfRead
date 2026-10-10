@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 夜间模式：只改变界面外壳，PDF 页面是否反色由阅读器内的夜间模式开关控制 -->
+    <color name="reader_background">#FF121212</color>
+
+    <color name="panel_background">#F21C1C1C</color>
+    <color name="panel_text">#E6FFFFFF</color>
+    <color name="panel_text_secondary">#99FFFFFF</color>
+    <color name="panel_divider">#1FFFFFFF</color>
+
+    <color name="sheet_background">#FF1E1E1E</color>
+    <color name="sheet_text">#E6FFFFFF</color>
+    <color name="sheet_subtext">#99FFFFFF</color>
+    <color name="chapter_selected">#331F6F5C</color>
+</resources>

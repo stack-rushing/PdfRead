@@ -1,0 +1,50 @@
+{
+  "_readme": "章节目录模板。把本文件复制为 app/src/main/assets/chapters/{bookId}.json 即可随 APK 预置目录；",
+  "_readme2": "或把导出的 JSON 直接放到 files/chapters/{bookId}.json 覆盖（优先级最高）。",
+  "_readme3": "bookId 是书籍的 MD5 标识，可在阅读器「更多 → 导出目录 JSON」后打开文件查看 bookId 字段。",
+  "_readme4": "pageNumberBase=1 表示下面的 startPage/endPage 与阅读器显示的页码一致（从 1 开始）。",
+  "bookId": "REPLACE_WITH_BOOK_ID",
+  "title": "Cambridge English Readers Level 3 - Sample",
+  "pageNumberBase": 1,
+  "chapters": [
+    {
+      "titleZh": "封面",
+      "titleEn": "Cover",
+      "startPage": 1,
+      "level": 0
+    },
+    {
+      "titleZh": "目录",
+      "titleEn": "Contents",
+      "startPage": 3,
+      "level": 0
+    },
+    {
+      "titleZh": "第一章 神秘来客",
+      "titleEn": "Chapter 1 The Stranger",
+      "startPage": 7,
+      "endPage": 24,
+      "level": 0
+    },
+    {
+      "titleZh": "第二章 真相浮出水面",
+      "titleEn": "Chapter 2 The Truth Comes Out",
+      "startPage": 25,
+      "endPage": 42,
+      "level": 0
+    },
+    {
+      "titleZh": "第三章 抉择",
+      "titleEn": "Chapter 3 The Choice",
+      "startPage": 43,
+      "endPage": 60,
+      "level": 0
+    },
+    {
+      "titleZh": "答案与词汇表",
+      "titleEn": "Answer Key and Glossary",
+      "startPage": 61,
+      "level": 1
+    }
+  ]
+}

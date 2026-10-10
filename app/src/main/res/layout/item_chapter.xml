@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chapterItemRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_chapter_item"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="52dp"
+    android:orientation="horizontal"
+    android:paddingStart="4dp"
+    android:paddingTop="6dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="6dp">
+
+    <!-- 层级折叠箭头：只有分组节点显示（叶子留空占位，保证标题对齐） -->
+    <ImageView
+        android:id="@+id/ivExpand"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:contentDescription="@string/chapter_expand"
+        android:padding="6dp"
+        android:src="@drawable/ic_chevron_right"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvIndex"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/sheet_subtext"
+        android:textSize="12sp"
+        tools:text="02" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvChapterTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/sheet_text"
+            android:textSize="14sp"
+            tools:text="巴斯克维尔猎犬" />
+
+        <TextView
+            android:id="@+id/tvChapterTitleEn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/sheet_subtext"
+            android:textSize="11sp"
+            android:visibility="gone"
+            tools:text="1 The Case Begins"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPageRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/sheet_subtext"
+        android:textSize="12sp"
+        tools:text="P19–167" />
+</LinearLayout>

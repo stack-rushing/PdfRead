@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_primary">#FF1F6F5C</color>
+    <color name="brand_primary_dark">#FF14503F</color>
+
+    <!-- 阅读区背景：纸张灰，避免纯白刺眼 -->
+    <color name="reader_background">#FFEDE8E0</color>
+
+    <!-- 顶/底控制面板（半透明，浮在页面上） -->
+    <color name="panel_background">#F2FFFFFF</color>
+    <color name="panel_text">#DE000000</color>
+    <color name="panel_text_secondary">#99000000</color>
+    <color name="panel_divider">#1F000000</color>
+
+    <!-- 章节抽屉 -->
+    <color name="sheet_background">#FFFAFAFA</color>
+    <color name="sheet_text">#DE000000</color>
+    <color name="sheet_subtext">#99000000</color>
+    <color name="chapter_selected">#1F1F6F5C</color>
+
+    <color name="ic_launcher_background">#FF1F6F5C</color>
+</resources>

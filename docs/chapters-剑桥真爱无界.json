@@ -1,0 +1,220 @@
+{
+ "bookId": "",
+ "title": "剑桥小说馆2级08 真爱无界 (Different Worlds)",
+ "pageNumberBase": 1,
+ "source": "OCR",
+ "chapters": [
+  {
+   "title": null,
+   "titleZh": "目录",
+   "titleEn": "Contents",
+   "startPage": 5,
+   "endPage": 7,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "FRONT",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "前言",
+   "titleEn": "Preface",
+   "startPage": 8,
+   "endPage": 10,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "FRONT",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "故事中的人物",
+   "titleEn": "People in the story",
+   "startPage": 11,
+   "endPage": 11,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "FRONT",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "故事中的地点",
+   "titleEn": "Places in the story",
+   "startPage": 12,
+   "endPage": 12,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "FRONT",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "读前思考",
+   "titleEn": "Before reading",
+   "startPage": 13,
+   "endPage": 13,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "FRONT",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 1 A hand on a guitar",
+   "titleEn": null,
+   "startPage": 14,
+   "endPage": 17,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 2 Shopping",
+   "titleEn": null,
+   "startPage": 18,
+   "endPage": 22,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 3 My friend",
+   "titleEn": null,
+   "startPage": 23,
+   "endPage": 25,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 4 The p arty",
+   "titleEn": null,
+   "startPage": 26,
+   "endPage": 29,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 5 snow",
+   "titleEn": null,
+   "startPage": 30,
+   "endPage": 33,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 6 spring",
+   "titleEn": null,
+   "startPage": 34,
+   "endPage": 37,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 7 A new boyfriend",
+   "titleEn": null,
+   "startPage": 38,
+   "endPage": 42,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 8 The girl in the",
+   "titleEn": null,
+   "startPage": 43,
+   "endPage": 48,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 9 Pizza and talkmg",
+   "titleEn": null,
+   "startPage": 49,
+   "endPage": 52,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 10 Jim s band",
+   "titleEn": null,
+   "startPage": 53,
+   "endPage": 57,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "Chapter 11 Happy ever after",
+   "titleEn": null,
+   "startPage": 58,
+   "endPage": 59,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "CHAPTER",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "读后活动",
+   "titleEn": "After reading",
+   "startPage": 60,
+   "endPage": 60,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "BACK",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "学习指导",
+   "titleEn": "Learning guide",
+   "startPage": 61,
+   "endPage": 69,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "BACK",
+   "confidence": 60
+  },
+  {
+   "title": null,
+   "titleZh": "参考译文",
+   "titleEn": "Translation",
+   "startPage": 70,
+   "endPage": 92,
+   "level": 0,
+   "parentIndex": -1,
+   "kind": "BACK",
+   "confidence": 60
+  }
+ ],
+ "_readme": "剑桥小说馆2级08《真爱无界》(Different Worlds) 实测目录。这本书是 92 页纯扫描件、无内置书签，本文件由「OCR 顶部页眉 + 章节标题识别」离线跑出来，19 条全部落在正确页面。",
+ "_readme2": "用法：在 App 里打开这本书 → 目录抽屉「导出」，得到 …/Android/data/com.novelreader.pdf/files/chapters/<bookId>.json，再用本文件覆盖其内容即可（App 以文件名定位，bookId 字段留空不影响）。",
+ "_readme3": "pageNumberBase=1 表示 startPage 与阅读器显示页码一致；kind=FRONT/BACK 是前置/后置附文；confidence=60 表示这是 OCR 启发式结果，个别标题可能带识别错误（页码已逐个核对过）。"
+}
