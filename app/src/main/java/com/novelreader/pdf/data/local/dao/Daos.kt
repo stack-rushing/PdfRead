@@ -14,13 +14,10 @@ import kotlinx.coroutines.flow.Flow
 interface BookDao {
 
     /**
-     * 书架顺序：**按书名升序固定排序**，不再按"最近阅读"。
+     * 书架顺序：这里只给一个**稳定的基础顺序**（按书名、再按加入时间）。
      *
-     * SQLite 的 TEXT 默认排序规则是 BINARY —— 直接比较 UTF-8 字节，
-     * 也就是 ASCII 部分按 ASCII 码、中文按 Unicode 码点。对同系列的书正好得到"自然顺序"：
-     * `剑桥小说馆2级07 …` < `剑桥小说馆2级16 …` < `剑桥小说馆2级17 …`（'0'(0x30) < '1'(0x31)）。
-     *
-     * 加 `addedAt` 做次级键，是为了同名书（同一本书的两个副本）顺序稳定、不来回跳。
+     * 真正的展示顺序由 [com.novelreader.pdf.data.model.NaturalOrder] 在仓库层做**自然排序**——
+     * 因为 SQL 的 `ORDER BY` 是逐字节比较，`2-10` 会排到 `2-2` 前面（'1' < '2'），那不是人想要的顺序。
      */
     @Query("SELECT * FROM books ORDER BY title ASC, added_at ASC")
     fun observeShelf(): Flow<List<BookEntity>>
