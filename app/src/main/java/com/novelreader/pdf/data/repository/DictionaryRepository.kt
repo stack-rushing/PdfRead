@@ -183,14 +183,21 @@ class DictionaryRepository(context: Context, db: AppDatabase) {
         rows.forEachIndexed { i, row ->
             val entryId = ids.getOrNull(i) ?: return@forEachIndexed
             if (entryId <= 0L) return@forEachIndexed
-            DictionaryNormalizer.formsOf(row.exchange).forEach { form ->
-                // 自己映射自己没有意义（running → running）
-                if (form != row.normalized) forms += DictFormEntity(dictId, form, entryId)
+            // 只给"常用词"建词形索引，两个理由：
+            //  · 生僻词的变形在 ECDICT 里本来就有独立词条，直接查得到，不必再建一份；
+            //  · 全量词书 77 万条，全建的话 dict_forms 会涨到上百万行、白占几百 MB。
+            if (!isCommon(row)) return@forEachIndexed
+            DictionaryNormalizer.formsOf(row.exchange, row.word).forEach { form ->
+                forms += DictFormEntity(dictId, form, entryId)
             }
         }
         if (forms.isNotEmpty()) dao.insertForms(forms)
         return rows.size
     }
+
+    /** 「值得建词形索引」的判据：有词频、有柯林斯星级、是牛津核心词，或带考试标签 */
+    private fun isCommon(e: DictEntryEntity): Boolean =
+        e.frq > 0 || e.bnc > 0 || e.collins > 0 || e.oxford == 1 || !e.tag.isNullOrBlank()
 
     /** OCR 误识别的兜底：先按前缀取候选，再按编辑距离 ≤1 筛 */
     private suspend fun fuzzy(normalized: String, limit: Int = 6): List<String> {

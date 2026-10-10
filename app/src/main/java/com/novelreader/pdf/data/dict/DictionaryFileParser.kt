@@ -34,14 +34,18 @@ object DictionaryNormalizer {
      *
      * 格式：`类型:单词/类型:单词`，类型含义：
      * `p` 过去式、`d` 过去分词、`i` 现在分词、`3` 第三人称单数、
-     * `r` 比较级、`t` 最高级、`s` 复数、`0` 本词的原形（Lemma）。
+     * `r` 比较级、`t` 最高级、`s` 复数、`0` 本词的原形（Lemma）、`1` 原形的变换形式。
      *
-     * **带 `0:` 的是"变形词条"，它本身不是原形**——这种条目不建映射，
-     * 否则会把 `running → running` 这种自环写进去。原形由它自己的条目承担。
+     * 两个坑，都是拿真实数据撞出来的：
+     * - **不能"见到 `0:` 就整条跳过"**：原形词条自己也会带 `0:`，
+     *   比如 `run` 的 exchange 是 `p:ran/i:running/d:run/0:run/1:d/3:runs/s:runs`，
+     *   早期版本因此让最常用的动词一个词形索引都没有；
+     * - `0`/`1` 两种类型要丢掉，并且归一化后等于自身的形式也丢掉，
+     *   这样既不会出现 `running → running` 的自环，也不会漏掉 `ran → run`。
      */
-    fun formsOf(exchange: String?): List<String> {
+    fun formsOf(exchange: String?, word: String? = null): List<String> {
         if (exchange.isNullOrBlank()) return emptyList()
-        if (exchange.split('/').any { it.startsWith("0:") }) return emptyList()
+        val self = word?.let { normalize(it) }
         val out = LinkedHashSet<String>()
         exchange.split('/').forEach { seg ->
             val idx = seg.indexOf(':')
@@ -49,7 +53,8 @@ object DictionaryNormalizer {
             val type = seg.substring(0, idx)
             if (type == "0" || type == "1") return@forEach
             val form = normalize(seg.substring(idx + 1))
-            if (form.isNotEmpty()) out += form
+            if (form.isEmpty() || form == self) return@forEach
+            out += form
         }
         return out.toList()
     }

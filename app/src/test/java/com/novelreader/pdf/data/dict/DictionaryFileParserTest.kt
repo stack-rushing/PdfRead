@@ -115,12 +115,21 @@ class DictionaryFileParserTest {
     }
 
     @Test
-    fun `词形变化只在原形条目上建映射`() {
-        // 原形条目：给出各种变形
-        val forms = DictionaryNormalizer.formsOf("d:perceived/p:perceived/3:perceives")
-        assertEquals(listOf("perceived", "perceives"), forms)
+    fun `词形变化解析`() {
+        // 常规原形词条
+        assertEquals(
+            listOf("perceived", "perceives"),
+            DictionaryNormalizer.formsOf("d:perceived/p:perceived/3:perceives"),
+        )
 
-        // 变形条目（带 0: 指向原形）不建映射，否则会出现 running → running 这种自环
+        // 真实数据：run 的 exchange 里带 0:/1:。早期版本"见到 0: 就整条跳过"，
+        // 结果最常用的动词一个词形索引都没有（这个 bug 是拿真实词库撞出来的）
+        assertEquals(
+            listOf("ran", "running", "runs"),
+            DictionaryNormalizer.formsOf("p:ran/i:running/d:run/0:run/1:d/3:runs/s:runs", word = "run"),
+        )
+
+        // 纯粹的变形词条（0: 指向原形）不该产生任何映射
         assertTrue(DictionaryNormalizer.formsOf("0:run/1:i").isEmpty())
         assertTrue(DictionaryNormalizer.formsOf(null).isEmpty())
         assertTrue(DictionaryNormalizer.formsOf("").isEmpty())
