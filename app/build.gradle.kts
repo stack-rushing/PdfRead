@@ -1,4 +1,4 @@
-import java.util.Properties
+﻿import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
@@ -28,8 +28,8 @@ android {
         // 只在自己用的 Android 14 / 15 设备上跑，直接砍掉历史包袱
         minSdk = 34
         targetSdk = 35
-        versionCode = 4
-        versionName = "2.1.0"
+        versionCode = 5
+        versionName = "2.1.1"
         vectorDrawables.useSupportLibrary = true
     }
 
