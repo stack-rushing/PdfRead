@@ -5,6 +5,7 @@ import com.novelreader.pdf.data.local.AppDatabase
 import com.novelreader.pdf.data.ocr.OcrEngine
 import com.novelreader.pdf.data.pdf.PdfOutlineParser
 import com.novelreader.pdf.data.repository.BookRepository
+import com.novelreader.pdf.data.repository.DictionaryRepository
 import com.novelreader.pdf.data.repository.LibraryRepository
 import com.novelreader.pdf.data.repository.TocRepository
 import com.novelreader.pdf.data.toc.TocGenerator
@@ -35,6 +36,9 @@ class AppContainer(context: Context) {
     val libraryRepository: LibraryRepository = LibraryRepository(database, appScope)
 
     val bookRepository: BookRepository = BookRepository(appContext)
+
+    /** 词书：导入用户自己的词典文件并提供查询（App 不附带任何词典数据） */
+    val dictionaryRepository: DictionaryRepository = DictionaryRepository(appContext, database)
 
     private val outlineParser = PdfOutlineParser()
 

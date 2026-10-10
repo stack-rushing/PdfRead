@@ -30,6 +30,19 @@
     <string name="shelf_batch_done_failed">失败 %1$d 个：\n%2$s</string>
     <string name="shelf_batch_done_none">没有处理任何文件</string>
 
+    <string name="shelf_menu_dictionary">词书与查词</string>
+
+    <!-- 词书与查词（数据来自用户自己导入的词典文件，App 不附带任何词典内容） -->
+    <string name="dict_title">词书与查词</string>
+    <string name="dict_search">查询</string>
+    <string name="dict_search_hint">输入单词或汉字</string>
+    <string name="dict_import">导入词书</string>
+    <string name="dict_imported">已导入的词书（关掉开关就不参与查询）</string>
+    <string name="dict_enabled">启用这本词书</string>
+    <string name="dict_delete">删除</string>
+    <string name="dict_delete_confirm">删除这本词书？\n\n只删本地数据库里的解析结果，不会动你原来的词典文件。</string>
+    <string name="dict_no_picker">没有可用的文件选择器</string>
+
     <!-- 阅读器 -->
     <string name="reader_back">返回</string>
     <string name="reader_toc">目录</string>

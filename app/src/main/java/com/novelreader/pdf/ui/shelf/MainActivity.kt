@@ -19,6 +19,7 @@ import com.novelreader.pdf.NovelReaderApp
 import com.novelreader.pdf.R
 import com.novelreader.pdf.data.repository.BookRepository
 import com.novelreader.pdf.databinding.ActivityMainBinding
+import com.novelreader.pdf.ui.dict.DictionaryActivity
 import com.novelreader.pdf.ui.reader.ReaderActivity
 import kotlinx.coroutines.launch
 
@@ -100,6 +101,12 @@ class MainActivity : AppCompatActivity() {
             runCatching {
                 pickTocs.launch(arrayOf("application/json", "text/plain", "application/octet-stream"))
             }.onFailure { snack(getString(R.string.shelf_batch_pick_toc)) }
+            true
+        }
+
+        R.id.action_dictionary -> {
+            runCatching { startActivity(Intent(this, DictionaryActivity::class.java)) }
+                .onFailure { snack(it.message ?: "无法打开词书页") }
             true
         }
 
