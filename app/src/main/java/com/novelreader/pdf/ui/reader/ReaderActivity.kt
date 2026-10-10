@@ -35,6 +35,8 @@ class ReaderActivity : BaseReaderActivity() {
 
         val callback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+                // 恢复滑动：上一页可能停在放大状态、把 isUserInputEnabled 关掉了
+                binding.pager.isUserInputEnabled = true
                 viewModel.onPageChanged(position)
             }
         }
@@ -60,7 +62,10 @@ class ReaderActivity : BaseReaderActivity() {
             }
 
             pageRenderer = renderer
-            val adapter = PdfPageAdapter(renderer, lifecycleScope) { binding.pager.width }
+            val adapter = PdfPageAdapter(renderer, lifecycleScope, { binding.pager.width }) { zoomed ->
+                // 放大时关掉 ViewPager2 的滑动：横向手势要用来平移页面，而不是翻页
+                binding.pager.isUserInputEnabled = !zoomed
+            }
             adapter.nightMode = state.nightMode
             pageAdapter = adapter
             binding.pager.adapter = adapter
