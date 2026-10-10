@@ -1,4 +1,5 @@
 {
+  "_disclaimer": "本文件只含目录条目（章节标题 + 页码 + 层级），不含书籍正文。由 NovelPdfReader 在你本机对你自己的 PDF 生成，供个人自用；请支持正版。版权方如认为不妥，提 issue 即删。详见仓库 README §12 免责声明与版权说明。",
  "bookId": "",
  "title": "剑桥小说馆2级08 真爱无界 (Different Worlds)",
  "pageNumberBase": 1,
