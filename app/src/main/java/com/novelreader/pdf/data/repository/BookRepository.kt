@@ -44,6 +44,12 @@ class BookRepository(private val context: Context) {
     /**
      * 确保本地副本存在。已存在且非空直接复用，否则流式复制。
      * 返回的 File 一定可读、可 seek、长度 > 0。
+     *
+     * **对源文件的契约：只读，绝不修改、绝不删除。**
+     * 这里是全工程唯一接触用户文件的地方，只有 [android.content.ContentResolver.openInputStream]
+     * 一个入口，没有 outputStream、没有 DocumentsContract.deleteDocument。
+     * 持久化授权也只申请 READ（见 [takePersistablePermission] 的调用点）。
+     * 从书架删一本书走的是 [deleteLocalCopy]，删的是这个私有副本，与用户的文件无关。
      */
     suspend fun ensureLocalCopy(uri: Uri, bookId: String): File = withContext(Dispatchers.IO) {
         val dir = File(context.filesDir, BOOKS_DIR).apply { if (!exists()) mkdirs() }

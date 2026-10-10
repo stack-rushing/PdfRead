@@ -497,6 +497,57 @@ schema 导出到 `app/schemas/…AppDatabase/1.json`，生成的 SQL 与 §9.4 �
 
 ---
 
+## 13. 安装与更新：你的数据会发生什么
+
+### 13.1 覆盖安装（推荐）
+
+同一个包名 `com.novelreader.pdf` + 同一把签名密钥 → Android 原地替换，**不需要卸载**：
+
+- 书架、阅读进度、已生成的目录（Room 数据库）**全部保留**；
+- App 私有目录里的 PDF 副本**保留**；
+- **你的原始 PDF 文件任何时候都不会被碰**（依据见 13.3）。
+
+```bash
+adb install -r PDFRead-release.apk     # 或者手机上直接点 APK 安装
+```
+
+前提是 `versionCode` 比已装的大（v2.0.0 = 2，v2.0.1 = 3）。
+release 的签名密钥在 `keystore/pdfread-release.jks`（已 gitignore）——**这把文件丢了，以后就只能卸载重装**。
+
+### 13.2 什么时候才需要卸载
+
+- 从 **debug 版**换到 **release 版**：签名不同，必须先卸载（卸载会清空书架与私有副本，你的原始 PDF 不受影响）；
+- 换一台电脑重新构建 debug 版：AGP 会生成新的调试密钥，同样要卸载一次。
+
+### 13.3 原始 PDF 为什么绝对安全
+
+- 导入只走 SAF（`ACTION_OPEN_DOCUMENT`），App 拿到的是一个 `content://` URI，不是文件路径；
+- 整个工程里读文件只有一处：`contentResolver.openInputStream(uri)`（`BookRepository.ensureLocalCopy`），
+  **没有 outputStream、没有 `DocumentsContract.deleteDocument`**；
+- 持久化授权只申请 **READ**（`MainActivity` 传的就是 `FLAG_GRANT_READ_URI_PERMISSION`），连写权限都没有；
+- 从书架删除一本书，删的是**私有副本**（`BookRepository.deleteLocalCopy`）。
+
+换句话说：即使 App 有 bug，它也没有能力改写或删除你的原文件。
+
+### 13.4 「私有副本」是什么、为什么要复制
+
+导入时默认会把 PDF 复制一份到 `filesDir/books/<bookId>.pdf`，原因有三：
+
+1. `PdfRenderer` 需要**可 seek** 的 fd，而部分网盘/文档提供者的 URI 给不了；
+2. SAF 的持久化授权可能在用户清理「最近文件」或卸载网盘 App 后失效，副本是最后的兜底；
+3. 有了确定的本地路径，`bookId` 可以直接由文件路径与元数据算出，不必每次打开都全文件哈希。
+
+代价是**每本书多占一份磁盘**（《真爱无界》45 MB，就多 45 MB）。
+`BookRepository.resolve(copyToLocal = false)` 可以关掉复制，退回「直接用 URI」。
+
+### 13.5 一个需要知道的坑：改表结构会清库
+
+`AppDatabase` 用了 `fallbackToDestructiveMigration()`。如果将来某个版本改了 Room 表结构
+却没有写 Migration，**升级时会重建整个数据库**——书架、阅读进度、目录缓存都会没
+（**原始 PDF 仍然安全**，重新导入即可）。
+
+目前 schema 版本是 1。真要改结构时应该先写 Migration；
+你自己也可以在升级前把目录用「导出」留一份底。
 ## 附录：v1 设计回顾（已被 v2 取代）
 
 v1 用 `android-pdf-viewer 2.8.2` + DataStore + 扁平章节模型，实现了：
