@@ -2,7 +2,6 @@ package com.novelreader.pdf.ui.reader
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -29,6 +28,7 @@ import com.novelreader.pdf.R
 import com.novelreader.pdf.data.model.BookRef
 import com.novelreader.pdf.data.toc.TocMode
 import com.novelreader.pdf.databinding.ActivityReaderBinding
+import com.novelreader.pdf.ui.theme.NightMode
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
@@ -132,11 +132,11 @@ abstract class BaseReaderActivity : AppCompatActivity() {
 
     private fun applySystemBars(visible: Boolean) {
         val controller = WindowCompat.getInsetsController(window, window.decorView)
-        val systemInNight = (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
-            Configuration.UI_MODE_NIGHT_YES
-        // 面板颜色跟随系统深色模式，所以状态栏图标也要跟着变
-        controller.isAppearanceLightStatusBars = !systemInNight
-        controller.isAppearanceLightNavigationBars = !systemInNight
+        // 用**实际生效的主题**判断，而不是系统深色开关：
+        // 用户可能在系统里开着深色、却在 App 里手动切成亮色，那时系统配置说了不算。
+        val dark = NightMode.isDark(this)
+        controller.isAppearanceLightStatusBars = !dark
+        controller.isAppearanceLightNavigationBars = !dark
         if (visible) {
             controller.show(WindowInsetsCompat.Type.systemBars())
         } else {
@@ -289,6 +289,9 @@ abstract class BaseReaderActivity : AppCompatActivity() {
 
         if (nightModeApplied != state.nightMode) {
             nightModeApplied = state.nightMode
+            // 先切界面主题（工具栏/抽屉/底栏跟着变深色），再让引擎处理页面位图。
+            // 切主题会让本 Activity 重建，阅读器靠 Room 里的页码回到原处。
+            NightMode.apply(this, state.nightMode)
             onApplyNightMode(state.nightMode)
         }
 
