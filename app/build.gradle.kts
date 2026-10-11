@@ -28,8 +28,8 @@ android {
         // 只在自己用的 Android 14 / 15 设备上跑，直接砍掉历史包袱
         minSdk = 34
         targetSdk = 35
-        versionCode = 10
-        versionName = "2.2.4"
+        versionCode = 11
+        versionName = "2.2.5"
         vectorDrawables.useSupportLibrary = true
     }
 

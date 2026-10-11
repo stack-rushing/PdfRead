@@ -17,6 +17,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.novelreader.pdf.NovelReaderApp
 import com.novelreader.pdf.R
+import com.novelreader.pdf.ui.theme.NightMode
 import com.novelreader.pdf.data.repository.BookRepository
 import com.novelreader.pdf.databinding.ActivityMainBinding
 import com.novelreader.pdf.ui.dict.DictionaryActivity
@@ -85,6 +86,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_shelf, menu)
+        // 勾选状态就是当前模式：菜单每次打开都重新读一次，免得显示成旧值
+        menu.findItem(R.id.action_night_mode)?.isChecked = NightMode.isDark(this)
         return true
     }
 
@@ -101,6 +104,12 @@ class MainActivity : AppCompatActivity() {
             runCatching {
                 pickTocs.launch(arrayOf("application/json", "text/plain", "application/octet-stream"))
             }.onFailure { snack(getString(R.string.shelf_batch_pick_toc)) }
+            true
+        }
+
+        R.id.action_night_mode -> {
+            val dark = NightMode.toggle(this)
+            snack(getString(if (dark) R.string.shelf_night_mode_on else R.string.shelf_night_mode_off))
             true
         }
 

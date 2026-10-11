@@ -71,11 +71,20 @@ class ReaderViewModel(
         observeDebouncedPersistence()
         observeChapters()
         observeTocTask()
-        observeNightMode()
         restoreProgress()
     }
 
     // ------------------------------------------------------------------ 初始化
+
+    private fun observeTocTask() {
+        viewModelScope.launch {
+            tocRepository.observeTask(book.bookId).collect { task ->
+                _uiState.update { it.copy(tocTask = task) }
+            }
+        }
+    }
+
+    fun setControlsVisible(visible: Boolean) = _uiState.update { it.copy(controlsVisible = visible) }
 
     private fun observeDebouncedPersistence() {
         viewModelScope.launch {
@@ -100,23 +109,6 @@ class ReaderViewModel(
             }
         }
     }
-
-    private fun observeTocTask() {
-        viewModelScope.launch {
-            tocRepository.observeTask(book.bookId).collect { task ->
-                _uiState.update { it.copy(tocTask = task) }
-            }
-        }
-    }
-
-    private fun observeNightMode() {
-        viewModelScope.launch {
-            library.observeNightMode().collect { enabled ->
-                _uiState.update { it.copy(nightMode = enabled) }
-            }
-        }
-    }
-
     private fun restoreProgress() {
         viewModelScope.launch {
             val saved = library.findBook(book.bookId)
@@ -283,15 +275,6 @@ class ReaderViewModel(
     // ------------------------------------------------------------------ 控件 / 夜间模式
 
     fun toggleControls() = _uiState.update { it.copy(controlsVisible = !it.controlsVisible) }
-
-    fun setControlsVisible(visible: Boolean) = _uiState.update { it.copy(controlsVisible = visible) }
-
-    fun toggleNightMode() {
-        val enabled = !_uiState.value.nightMode
-        _uiState.update { it.copy(nightMode = enabled) }
-        viewModelScope.launch { library.setNightMode(enabled) }
-    }
-
     // ------------------------------------------------------------------ 目录
 
     fun openChapterList() = emit(ReaderEvent.OpenChapterList)

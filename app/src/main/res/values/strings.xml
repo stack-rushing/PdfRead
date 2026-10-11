@@ -47,6 +47,12 @@
     <string name="reader_back">返回</string>
     <string name="reader_toc">目录</string>
     <string name="reader_night_mode">夜间模式</string>
+    <!-- 按钮的无障碍描述同时说明"按下去会发生什么"，比只写"夜间模式"清楚 -->
+    <string name="reader_night_mode_on">深色模式已开启，点击关闭</string>
+    <string name="reader_night_mode_off">深色模式已关闭，点击开启</string>
+    <string name="shelf_menu_night_mode">深色模式</string>
+    <string name="shelf_night_mode_on">已开启深色模式</string>
+    <string name="shelf_night_mode_off">已关闭深色模式</string>
     <string name="reader_more">更多</string>
     <string name="reader_prev_chapter">上一章</string>
     <string name="reader_next_chapter">下一章</string>

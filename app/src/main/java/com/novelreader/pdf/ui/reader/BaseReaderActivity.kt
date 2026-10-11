@@ -63,7 +63,6 @@ abstract class BaseReaderActivity : AppCompatActivity() {
 
     private var engineInitialized = false
     private var controlsVisibleShown = true
-    private var nightModeApplied = false
     private var welcomeShown = false
     private var userTouchedControls = false
 
@@ -77,7 +76,23 @@ abstract class BaseReaderActivity : AppCompatActivity() {
 
     protected abstract fun onJumpToPage(page: Int, smooth: Boolean)
 
-    protected abstract fun onApplyNightMode(enabled: Boolean)
+    /**
+     * 夜间按钮要**看得出当前是开还是关**：开着用强调色，关着用普通图标色。
+     * 以前它只是个"按一下翻转"的图标，用户无从判断当前状态。
+     */
+    private fun refreshNightModeButton() {
+        val dark = NightMode.isDark(this)
+        val attr = if (dark) {
+            com.google.android.material.R.attr.colorPrimary
+        } else {
+            com.google.android.material.R.attr.colorOnSurfaceVariant
+        }
+        val color = com.google.android.material.color.MaterialColors.getColor(binding.btnNightMode, attr)
+        binding.btnNightMode.imageTintList = android.content.res.ColorStateList.valueOf(color)
+        binding.btnNightMode.contentDescription = getString(
+            if (dark) R.string.reader_night_mode_on else R.string.reader_night_mode_off,
+        )
+    }
 
     protected abstract fun onReleaseEngine()
 
@@ -151,7 +166,9 @@ abstract class BaseReaderActivity : AppCompatActivity() {
     private fun setupControls() {
         binding.btnBack.setOnClickListener { finish() }
         binding.btnToc.setOnClickListener { viewModel.openChapterList() }
-        binding.btnNightMode.setOnClickListener { viewModel.toggleNightMode() }
+        // 深色模式是**全局**开关：一键切整个 App（书架、抽屉、底栏、PDF 页面）
+        binding.btnNightMode.setOnClickListener { NightMode.toggle(this) }
+        refreshNightModeButton()
         binding.btnMore.setOnClickListener { anchor -> showOverflowMenu(anchor) }
         binding.btnPrevChapter.setOnClickListener { viewModel.prevChapter() }
         binding.btnNextChapter.setOnClickListener { viewModel.nextChapter() }
@@ -285,14 +302,6 @@ abstract class BaseReaderActivity : AppCompatActivity() {
         if (controlsVisibleShown != state.controlsVisible) {
             controlsVisibleShown = state.controlsVisible
             animateControls(state.controlsVisible)
-        }
-
-        if (nightModeApplied != state.nightMode) {
-            nightModeApplied = state.nightMode
-            // 先切界面主题（工具栏/抽屉/底栏跟着变深色），再让引擎处理页面位图。
-            // 切主题会让本 Activity 重建，阅读器靠 Room 里的页码回到原处。
-            NightMode.apply(this, state.nightMode)
-            onApplyNightMode(state.nightMode)
         }
 
         binding.errorPanel.isVisible = state.error != null

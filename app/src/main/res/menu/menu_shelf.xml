@@ -14,6 +14,13 @@
         android:title="@string/shelf_menu_batch_toc"
         app:showAsAction="never" />
 
+    <!-- 深色模式：全局开关，勾选状态就是当前模式 -->
+    <item
+        android:id="@+id/action_night_mode"
+        android:checkable="true"
+        android:title="@string/shelf_menu_night_mode"
+        app:showAsAction="never" />
+
     <!-- 词书（自己准备的词典文件）与查词 -->
     <item
         android:id="@+id/action_dictionary"

@@ -23,7 +23,6 @@ data class ReaderUiState(
     val currentChapterIndex: Int = -1,
     /** 顶/底控件是否可见（沉浸式：默认隐藏） */
     val controlsVisible: Boolean = false,
-    val nightMode: Boolean = false,
     /** 用户正在拖进度条：期间忽略页面回调，避免进度条抖动 */
     val seekBarDragging: Boolean = false,
     val error: String? = null,
