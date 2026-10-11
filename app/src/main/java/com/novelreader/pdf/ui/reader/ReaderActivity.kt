@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.novelreader.pdf.R
 import com.novelreader.pdf.data.model.BookRef
+import com.novelreader.pdf.ui.theme.NightMode
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -67,7 +68,9 @@ class ReaderActivity : BaseReaderActivity() {
                 // 放大时关掉 ViewPager2 的滑动：横向手势要用来平移页面，而不是翻页
                 binding.pager.isUserInputEnabled = !zoomed
             }
-            adapter.nightMode = state.nightMode
+            // 直接同步读全局开关：适配器是异步创建的，等异步状态送过来会赛跑
+            // （这就是"重进某本 PDF 时深色丢失"的根因）
+            adapter.nightMode = NightMode.isDark(this@ReaderActivity)
             pageAdapter = adapter
             binding.pager.adapter = adapter
             // 页面之间的间隙用主题色（夜间是深灰），不再写死黑白
@@ -81,11 +84,6 @@ class ReaderActivity : BaseReaderActivity() {
 
     override fun onJumpToPage(page: Int, smooth: Boolean) {
         runCatching { binding.pager.setCurrentItem(page, smooth) }
-    }
-
-    override fun onApplyNightMode(enabled: Boolean) {
-        binding.pager.setBackgroundColor(ContextCompat.getColor(this, R.color.reader_background))
-        pageAdapter?.nightMode = enabled
     }
 
     override fun onReleaseEngine() {

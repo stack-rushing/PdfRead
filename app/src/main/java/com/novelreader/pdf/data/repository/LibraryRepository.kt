@@ -157,16 +157,10 @@ class LibraryRepository(
 
     // ------------------------------------------------------------------ 设置
 
-    fun observeNightMode(): Flow<Boolean> =
-        settingDao.observe(KEY_NIGHT_MODE).map { it == "1" }
-
-    suspend fun setNightMode(enabled: Boolean) {
-        settingDao.put(SettingEntity(KEY_NIGHT_MODE, if (enabled) "1" else "0"))
-    }
-
-    private companion object {
-        const val KEY_NIGHT_MODE = "night_mode"
-    }
+    // 深色模式不在这里：它是**全局界面开关**，存在 SharedPreferences 里（见 ui/theme/NightMode），
+    // 因为它必须在启动时**同步**读到才能决定加载哪套主题，而 Room 查询是异步的。
+    // 早期版本把它存在 settings 表里、靠 Flow 观察，结果和页面适配器的异步创建赛跑，
+    // 导致「重进某本 PDF 时深色丢失」——那条通路已经删掉。
 }
 
 // ---------------------------------------------------------------------- 映射

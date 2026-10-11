@@ -65,7 +65,19 @@ object NightMode {
             .getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             .getInt(KEY_MODE, FOLLOW_SYSTEM)
 
-    /** 系统当前是不是深色（只在"首次运行取初值"时用得到） */
+    /**
+     * 开关一次，返回切换后的状态。
+     *
+     * 判断依据是**当前实际生效的主题**而不是配置值：用户可能在系统里开着深色、
+     * 却在 App 里手动切成亮色，那时"反一下"的方向才算得对。
+     */
+    fun toggle(context: Context): Boolean {
+        val target = !isDark(context)
+        apply(context, target)
+        return target
+    }
+
+    /** 系统当前是不是深色 */
     fun systemIsDark(context: Context): Boolean =
         (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
             Configuration.UI_MODE_NIGHT_YES
