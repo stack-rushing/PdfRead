@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
@@ -69,7 +70,10 @@ class ReaderActivity : BaseReaderActivity() {
             adapter.nightMode = state.nightMode
             pageAdapter = adapter
             binding.pager.adapter = adapter
-            binding.pager.setBackgroundColor(if (state.nightMode) Color.BLACK else Color.WHITE)
+            // 页面之间的间隙用主题色（夜间是深灰），不再写死黑白
+            binding.pager.setBackgroundColor(
+                ContextCompat.getColor(this@ReaderActivity, R.color.reader_background),
+            )
             binding.pager.setCurrentItem(savedPage.coerceIn(0, (count - 1).coerceAtLeast(0)), false)
             viewModel.onDocumentReady(count)
         }
@@ -80,7 +84,7 @@ class ReaderActivity : BaseReaderActivity() {
     }
 
     override fun onApplyNightMode(enabled: Boolean) {
-        binding.pager.setBackgroundColor(if (enabled) Color.BLACK else Color.WHITE)
+        binding.pager.setBackgroundColor(ContextCompat.getColor(this, R.color.reader_background))
         pageAdapter?.nightMode = enabled
     }
 
