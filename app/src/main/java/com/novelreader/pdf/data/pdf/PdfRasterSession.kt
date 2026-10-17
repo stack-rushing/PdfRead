@@ -26,7 +26,12 @@ class PdfRasterSession(private val file: File) : Closeable {
     private var descriptor: ParcelFileDescriptor? = null
     private var renderer: PdfRenderer? = null
 
+    /** 显示页数（一页两开时是物理页数的两倍），全工程统一用这个编号 */
     var pageCount: Int = 0
+        private set
+
+    /** 一页两开：一张纸印了两个书页 */
+    var spread: Boolean = false
         private set
 
     suspend fun open(): Int = withContext(Dispatchers.IO) {
@@ -36,7 +41,11 @@ class PdfRasterSession(private val file: File) : Closeable {
             val r = PdfRenderer(pfd)
             descriptor = pfd
             renderer = r
-            pageCount = r.pageCount
+            // 用第一页的宽高比判定：竖版书页约 0.6，两页并排约 1.2
+            spread = runCatching {
+                r.openPage(0).use { SpreadLayout.isSpread(it.width, it.height) }
+            }.getOrDefault(false)
+            pageCount = SpreadLayout.displayPageCount(r.pageCount, spread)
             pageCount
         }
     }
@@ -66,19 +75,33 @@ class PdfRasterSession(private val file: File) : Closeable {
             }
         }
 
-    private fun renderLocked(index: Int, targetWidth: Int): Bitmap? {
+    /**
+     * [displayIndex] 是**显示页**编号。一页两开时：物理页 = displayIndex / 2，
+     * 半页 = displayIndex % 2；整张纸按两倍宽度渲染再裁出那一半。
+     */
+    private fun renderLocked(displayIndex: Int, targetWidth: Int): Bitmap? {
         val r = renderer ?: return null
-        if (index < 0 || index >= r.pageCount) return null
+        val sheetIndex = SpreadLayout.sheetOf(displayIndex, spread)
+        if (sheetIndex < 0 || sheetIndex >= r.pageCount) return null
+        val sheetWidth = SpreadLayout.sheetRenderWidth(targetWidth, spread)
         return runCatching {
-            r.openPage(index).use { page ->
-                val width = targetWidth.coerceAtLeast(1)
-                val scale = width.toFloat() / page.width.toFloat()
+            r.openPage(sheetIndex).use { page ->
+                val scale = sheetWidth.toFloat() / page.width.toFloat()
                 val height = (page.height * scale).toInt().coerceAtLeast(1)
-                val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+                val sheet = Bitmap.createBitmap(sheetWidth, height, Bitmap.Config.ARGB_8888)
                 // PDF 页面本身没有背景色，不铺白会在深色主题下出现"文字浮在黑色上"
-                bitmap.eraseColor(Color.WHITE)
-                page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-                bitmap
+                sheet.eraseColor(Color.WHITE)
+                page.render(sheet, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+                if (!spread) {
+                    sheet
+                } else {
+                    val half = SpreadLayout.halfOf(displayIndex, spread)
+                    val halfWidth = sheet.width / 2
+                    val x = if (half == 0) 0 else halfWidth
+                    val cropped = Bitmap.createBitmap(sheet, x, 0, halfWidth, sheet.height)
+                    sheet.recycle()
+                    cropped
+                }
             }
         }.getOrNull()
     }

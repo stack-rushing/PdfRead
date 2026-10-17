@@ -30,7 +30,12 @@ class PdfPageRenderer(private val file: File) {
     private var descriptor: ParcelFileDescriptor? = null
     private var renderer: PdfRenderer? = null
 
+    /** 显示页数（一页两开时是物理页数的两倍）。阅读进度、目录页码全用这个编号 */
     var pageCount: Int = 0
+        private set
+
+    /** 一页两开：一张纸印了两个书页，显示时要拆开 */
+    var spread: Boolean = false
         private set
 
     /** 打开文档并返回页数；失败会抛异常，由调用方转成 UI 错误提示 */
@@ -41,7 +46,15 @@ class PdfPageRenderer(private val file: File) {
             val newRenderer = PdfRenderer(pfd)
             descriptor = pfd
             renderer = newRenderer
-            pageCount = newRenderer.pageCount
+            spread = runCatching {
+                newRenderer.openPage(0).use {
+                    com.novelreader.pdf.data.pdf.SpreadLayout.isSpread(it.width, it.height)
+                }
+            }.getOrDefault(false)
+            pageCount = com.novelreader.pdf.data.pdf.SpreadLayout.displayPageCount(
+                newRenderer.pageCount,
+                spread,
+            )
             pageCount
         }
     }
@@ -53,16 +66,37 @@ class PdfPageRenderer(private val file: File) {
     suspend fun renderPage(index: Int, targetWidth: Int): Bitmap? = withContext(Dispatchers.IO) {
         mutex.withLock {
             val pdfRenderer = renderer ?: return@withLock null
-            if (index < 0 || index >= pdfRenderer.pageCount) return@withLock null
+            // 边界按**物理页**检查（显示页可能比物理页多一倍）
+            val sheetForBounds = com.novelreader.pdf.data.pdf.SpreadLayout.sheetOf(index, spread)
+            if (sheetForBounds < 0 || sheetForBounds >= pdfRenderer.pageCount) return@withLock null
             runCatching {
-                pdfRenderer.openPage(index).use { page ->
-                    val width = targetWidth.coerceAtLeast(1)
-                    val scale = width.toFloat() / page.width.toFloat()
+                // index 是**显示页**：一页两开时换算成"第几张纸 + 左/右半"，整张按两倍宽渲染再裁
+                val sheetIndex = com.novelreader.pdf.data.pdf.SpreadLayout.sheetOf(index, spread)
+                val sheetWidth = com.novelreader.pdf.data.pdf.SpreadLayout.sheetRenderWidth(
+                    targetWidth,
+                    spread,
+                )
+                pdfRenderer.openPage(sheetIndex).use { page ->
+                    val scale = sheetWidth.toFloat() / page.width.toFloat()
                     val height = (page.height * scale).toInt().coerceAtLeast(1)
-                    val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-                    bitmap.eraseColor(Color.WHITE)
-                    page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-                    bitmap
+                    val sheet = Bitmap.createBitmap(sheetWidth, height, Bitmap.Config.ARGB_8888)
+                    sheet.eraseColor(Color.WHITE)
+                    page.render(sheet, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+                    if (!spread) {
+                        sheet
+                    } else {
+                        val halfX = com.novelreader.pdf.data.pdf.SpreadLayout.halfOf(index, spread) *
+                            (sheet.width / 2)
+                        val cropped = Bitmap.createBitmap(
+                            sheet,
+                            halfX,
+                            0,
+                            sheet.width / 2,
+                            sheet.height,
+                        )
+                        sheet.recycle()
+                        cropped
+                    }
                 }
             }.getOrNull()
         }
