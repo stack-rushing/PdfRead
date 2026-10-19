@@ -32,13 +32,13 @@
         </activity>
 
         <!--
-          Reader 用 configChanges 自行兜住旋转/分屏，避免重建后重新解析整本 PDF
+          Reader 用 configChanges 自行兜住旋转/分屏，避免重建后重新解析整本 PDF。\n         **但不包含 uiMode**：切换深色模式时必须让系统重建，否则已画好的控件保持旧配色
           （2278 页的书虫合集重建一次要好几秒）；即便真被系统重建，
           onPause/onStop 的进度落盘也能保证续读位置不丢。
         -->
         <activity
             android:name=".ui.reader.ReaderActivity"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|keyboard|uiMode|density|fontScale"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|keyboard|density|fontScale"
             android:exported="false"
             android:theme="@style/Theme.NovelReader.Reader" />
 

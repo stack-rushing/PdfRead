@@ -1,0 +1,140 @@
+{
+  "_disclaimer": "本文件只含目录条目（章节标题 + 页码 + 层级），不含书籍正文。由 NovelPdfReader 在本机对使用者自己的 PDF 生成，供个人自用；请支持正版。版权方如认为不妥，提 issue 即删。详见仓库 README §12 免责声明与版权说明。",
+  "title": "Two Lives",
+  "totalPages": 35,
+  "chapters": [
+    {
+      "title": "Chapter 1 Two young lives",
+      "titleEn": "Chapter 1 Two young lives",
+      "startPage": 1,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "人物表",
+      "titleEn": "Characters",
+      "startPage": 2,
+      "kind": "FRONT",
+      "level": 0
+    },
+    {
+      "title": "Chapter 1 Two young lives",
+      "titleEn": "Chapter 1 Two young lives",
+      "startPage": 3,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 2 The friendship continues",
+      "titleEn": "Chapter 2 The friendship continues",
+      "startPage": 6,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 3 Romance grows",
+      "titleEn": "Chapter 3 Romance grows",
+      "startPage": 7,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 4 Death at the mine",
+      "titleEn": "Chapter 4 Death at the mine",
+      "startPage": 8,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 5 Leaving Tredonald",
+      "titleEn": "Chapter 5 Leaving Tredonald",
+      "startPage": 10,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 6 A surprise find",
+      "titleEn": "Chapter 6 A surprise find",
+      "startPage": 12,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 7 Time to decide",
+      "titleEn": "Chapter 7 Time to decide",
+      "startPage": 15,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 8 Telling Beth",
+      "titleEn": "Chapter 8 Telling Beth",
+      "startPage": 16,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 9 A second letter",
+      "titleEn": "Chapter 9 A second letter",
+      "startPage": 18,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 10 Writing back",
+      "titleEn": "Chapter 10 Writing back",
+      "startPage": 19,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 11 Home to Wales",
+      "titleEn": "Chapter 11 Home to Wales",
+      "startPage": 20,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 12 A new start",
+      "titleEn": "Chapter 12 A new start",
+      "startPage": 22,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 13 Lunch with Beth",
+      "titleEn": "Chapter 13 Lunch with Beth",
+      "startPage": 24,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 14 In love",
+      "titleEn": "Chapter 14 In love",
+      "startPage": 26,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 15 An old photograph",
+      "titleEn": "Chapter 15 An old photograph",
+      "startPage": 28,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 16 Dinner for five",
+      "titleEn": "Chapter 16 Dinner for five",
+      "startPage": 29,
+      "kind": "CHAPTER",
+      "level": 0
+    },
+    {
+      "title": "Chapter 17 Time to go",
+      "titleEn": "Chapter 17 Time to go",
+      "startPage": 30,
+      "kind": "CHAPTER",
+      "level": 0
+    }
+  ]
+}
