@@ -195,6 +195,30 @@ class PdfTextBoxReader(private val file: File) {
                     stream = streamBytes,
                 )
             }
+            // 现代 PDF 会把大量对象压缩进**对象流**（/Type /ObjStm）里，
+            // 扫 `N M obj` 只能看到外壳。不展开的话，页面引用的 /Contents、/Resources、/Font
+            // 全都"查不到"，表现就是"少数页有字、大部分页空白"（实测 Two Lives 7/40）。
+            val objStms = out.values.filter { it.dictAt("/Type") == "/ObjStm" }.toList()
+            objStms.forEach { stm ->
+                val data = stm.stream?.let { Filters.decode(it) } ?: return@forEach
+                val count = stm.numbers("/N").firstOrNull()?.toInt() ?: 0
+                val first = stm.numbers("/First").firstOrNull()?.toInt() ?: 0
+                if (count <= 0 || first <= 0 || first >= data.size) return@forEach
+                val header = data.copyOfRange(0, first).toString(Charsets.ISO_8859_1)
+                val nums = header.trim().split(Regex("\\s+")).mapNotNull { it.toIntOrNull() }
+                for (k in 0 until minOf(count, nums.size / 2)) {
+                    val objNum = nums[k * 2]
+                    val begin = nums[k * 2 + 1]
+                    val end = if ((k + 1) * 2 + 1 < nums.size) nums[(k + 1) * 2 + 1] else data.size - first
+                    val from = first + begin
+                    val to = minOf(first + end, data.size)
+                    if (from < 0 || to <= from || from >= data.size) continue
+                    if (!out.containsKey(objNum)) {
+                        out[objNum] = PdfObject(objNum, data.copyOfRange(from, to), null)
+                    }
+                }
+            }
+
             return out
         }
 
@@ -261,6 +285,31 @@ class PdfTextBoxReader(private val file: File) {
             if (contents.isEmpty()) {
                 obj.arrayRefs("/Contents").forEach { ref -> objects[ref]?.stream?.let { contents += it } }
             }
+            // 正文经常不在页面自己的 /Contents 里，而是放在 **Form XObject** 里，
+            // 页面内容流只剩一句 `q … /Fm0 Do Q`。不展开的话整本书的正文都读不到
+            // （实测 Two Lives 抽样 40 页只有 7 页有字，就是这个原因）。
+            // 这里只按 /Subtype /Form 过滤，字体/图片等其它 XObject 会被排除。
+            val xobjectRefs = obj.refOf("/Resources")
+                ?.let { objects[it]?.dictBytes?.toString(Charsets.ISO_8859_1) }
+                ?.let { resText ->
+                    val at = resText.indexOf("/XObject")
+                    if (at < 0) {
+                        emptyList()
+                    } else {
+                        Regex("""(\d+)\s+\d+\s+R""")
+                            .findAll(resText.substring(at))
+                            .mapNotNull { it.groupValues.getOrNull(1)?.toIntOrNull() }
+                            .toList()
+                    }
+                }
+                .orEmpty()
+            xobjectRefs.forEach { ref ->
+                val xobj = objects[ref] ?: return@forEach
+                if (xobj.dictAt("/Subtype") == "/Form") {
+                    xobj.stream?.let { contents += it }
+                }
+            }
+
             if (contents.isEmpty()) return null
 
             val resources = obj.refOf("/Resources")
@@ -529,6 +578,35 @@ class PdfTextBoxReader(private val file: File) {
     /** 把带坐标的文本拼成行：y 相近归为同一行，每行按 x 排序 */
     private object LineAssembler {
 
+        /**
+         * 拼一行文本。
+         *
+         * 同一个词常常被拆成好几个 `Tj`（`Hele n Naylo r` 这种），一律补空格会把词切碎。
+         * 这里按"上一段估算的结束位置"与"下一段的起点"判断间距：小就直接连，大才补空格。
+         * 字宽是估的（每个字符约 4.5 单位），够用——这层只服务于"读标题"，不追求排版还原。
+         */
+        fun joinRow(row: List<TextItem>): String {
+            if (row.isEmpty()) return ""
+            val sb = StringBuilder()
+            var endX = Float.NEGATIVE_INFINITY
+            row.forEach { item ->
+                if (sb.isNotEmpty() && item.x - endX > SPACE_GAP) sb.append(' ')
+                sb.append(item.text)
+                endX = item.x + item.text.length * CHAR_WIDTH
+            }
+            return sb.toString().trim()
+        }
+
+        /**
+         * 估算字宽与"该不该补空格"的阈值。
+         *
+         * 刻意**偏保守**（字宽估小、阈值调小）——多补空格对目录识别无害
+         * （检测器按词匹配，`Chapter  2` 一样认得出），而少补空格会把词粘住，
+         * `Chapter2` 就认不出来了。
+         */
+        private const val CHAR_WIDTH = 3.0f
+        private const val SPACE_GAP = 1.5f
+
         fun assemble(items: List<TextItem>, maxLines: Int): List<String> {
             if (items.isEmpty()) return emptyList()
             // PDF 的 y 轴朝上，行从上到下 = y 从大到小
@@ -539,7 +617,7 @@ class PdfTextBoxReader(private val file: File) {
             }
             return rows
                 .take(maxLines)
-                .map { row -> row.sortedBy { it.x }.joinToString(" ") { it.text }.trim() }
+                .map { row -> joinRow(row.sortedBy { it.x }) }
                 .filter { it.isNotEmpty() }
         }
     }
