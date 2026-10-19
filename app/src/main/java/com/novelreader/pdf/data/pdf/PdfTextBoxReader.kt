@@ -413,6 +413,15 @@ class PdfTextBoxReader(private val file: File) {
                         }
                     }
                     c == '[' || c == ']' || c == '<' || c == '>' -> i++
+                    // `/F1` 这类**名字**是操作数，不是算子：必须原样留下（去掉斜杠），
+                    // 否则 `Tf` 拿不到字体名，后面所有文本都会因为"没有当前字体"被丢掉。
+                    c == '/' -> {
+                        val start = i + 1
+                        var k = start
+                        while (k < text.length && !text[k].isWhitespace() && text[k] !in "()<>[]/{}%") k++
+                        operands += text.substring(start, k)
+                        i = k
+                    }
                     c.isWhitespace() -> i++
                     else -> {
                         val start = i
