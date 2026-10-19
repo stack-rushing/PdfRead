@@ -103,6 +103,11 @@ ksp {
 }
 
 dependencies {
+    // PDF 文字层提取（目录生成优先读文字层，读不到再 OCR）。
+    // 只用于"读文字"，不参与渲染 —— 渲染仍然是系统 PdfRenderer。
+    // Apache-2.0；代价是 APK 增大约 8~10 MB。
+    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
+
     // ---------- AndroidX 基础 ----------
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
