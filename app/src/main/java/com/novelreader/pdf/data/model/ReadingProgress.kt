@@ -40,6 +40,9 @@ enum class TocSource {
     /** OCR 扫描页眉后重锚定过页码的目录 */
     OCR,
 
+    /** 从 PDF **文字层**读出的目录：有文字层的书又快又准，不依赖扫描质量 */
+    TEXT_LAYER,
+
     /** 用户手改 / 导入的 JSON（优先级最高，永远不被自动结果覆盖） */
     LOCAL_JSON,
 
@@ -57,6 +60,7 @@ enum class TocSource {
             NONE -> "未生成"
             PDF_OUTLINE -> "PDF 内置书签"
             OCR -> "OCR 识别"
+            TEXT_LAYER -> "PDF 文字层"
             LOCAL_JSON -> "本地 JSON"
             ASSET_JSON -> "预置配置"
             MANUAL -> "手动指定"

@@ -22,3 +22,13 @@
 # ============ 排错用 ============
 -keepattributes SourceFile, LineNumberTable
 -renamesourcefileattribute SourceFile
+
+# ------------------------------------------------------------------ PdfBox（文字层提取）
+# PdfBox 通过反射加载字体/CMap/滤镜实现，整包保留最省事；
+# 只用于读 PDF 文字，不参与渲染。
+-keep class com.tom_roush.pdfbox.** { *; }
+-keep class com.tom_roush.fontbox.** { *; }
+-dontwarn com.tom_roush.pdfbox.**
+-dontwarn com.tom_roush.fontbox.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.apache.commons.logging.**

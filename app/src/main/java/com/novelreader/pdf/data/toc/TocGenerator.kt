@@ -7,6 +7,7 @@ import com.novelreader.pdf.data.ocr.OcrEngine
 import com.novelreader.pdf.data.pdf.BilingualTitle
 import com.novelreader.pdf.data.pdf.OutlineNode
 import com.novelreader.pdf.data.pdf.PdfRasterSession
+import com.novelreader.pdf.data.pdf.PdfTextBoxReader
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import java.io.File
@@ -241,6 +242,45 @@ class TocGenerator(
         }
         return builder.finish()
     }
+    /**
+     * 用 PDF **文字层**生成目录（不是 OCR）。
+     *
+     * 为什么优先于 OCR：文字层是出版方切好的文本，字符精确、没有识别误差，
+     * 而且不用渲染整本书的图片，速度是 OCR 的数倍。纯扫描件没有文字层，
+     * 这里会返回空表，由调用方回退到 [scanByOcr]。
+     *
+     * 规则本身不重复实现：逐页取前几行喂给 [OcrChapterBuilder]，
+     * 章节判定、多本合集的切分、附文识别全部复用同一套逻辑（已有单元测试兜底）。
+     */
+    suspend fun scanByTextLayer(
+        file: File,
+        totalPages: Int,
+        progress: TocProgress,
+    ): List<Chapter> {
+        if (totalPages <= 0) return emptyList()
+        val reader = PdfTextBoxReader(file)
+        val builder = OcrChapterBuilder(totalPages)
+        try {
+            if (!reader.open()) return emptyList()
+            // 没有可用文字层（纯扫描件）就别浪费时间了，直接让调用方走 OCR
+            if (!reader.hasUsableTextLayer()) return emptyList()
+
+            // 一页两开时显示页数是物理页数的两倍，两个数都取自 SpreadLayout，天然一致；
+            // 这里取较小值只是防止越界
+            val pages = minOf(totalPages, reader.pageCount)
+            for (page in 0 until pages) {
+                currentCoroutineContext().ensureActive()
+                progress(PHASE_TEXT, page + 1, pages)
+                val lines = reader.pageLines(page, TEXT_LAYER_LINES)
+                if (lines.isEmpty()) continue
+                builder.accept(page, lines)
+            }
+        } finally {
+            reader.close()
+        }
+        return builder.finish()
+    }
+
     private fun normalize(text: String): String =
         text.lowercase()
             .replace(WHITESPACE, "")
@@ -254,6 +294,9 @@ class TocGenerator(
         const val PHASE_OUTLINE = "解析内置书签"
         const val PHASE_OCR = "OCR 识别页眉"
         const val PHASE_SCAN = "OCR 扫描章节标题"
+        const val PHASE_TEXT = "读取 PDF 文字层"
+        /** 从文字层每页取前几行喂给章节判定（页眉通常在前两行，留点余量） */
+        private const val TEXT_LAYER_LINES = 6
 
         /** OCR 渲染宽度：太低中文识别率掉得快，太高整本书要多花好几分钟 */
         private const val OCR_WIDTH = 720
