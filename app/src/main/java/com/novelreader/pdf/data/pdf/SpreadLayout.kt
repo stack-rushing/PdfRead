@@ -20,6 +20,21 @@ object SpreadLayout {
     fun isSpread(pageWidth: Int, pageHeight: Int): Boolean =
         pageHeight > 0 && pageWidth > 0 && pageWidth.toFloat() / pageHeight >= SPREAD_ASPECT
 
+    /**
+     * 从若干页的宽高比判定整本是不是一页两开：**过半数是宽的就算**。
+     *
+     * 不能只看第一页：`3Two Lives.pdf` 第 0 页是封面（0.62），第 1~34 页全是两开（1.23），
+     * 只看第一页会把整本判成单页，于是条带横跨两页、OCR 结果变成乱码。
+     *
+     * 整本统一处理（而不是逐页判断），否则显示页编号会随页面漂移，
+     * 阅读进度与目录页码就对不上了。
+     */
+    fun decide(aspectRatios: List<Float>): Boolean {
+        if (aspectRatios.isEmpty()) return false
+        val wide = aspectRatios.count { it >= SPREAD_ASPECT }
+        return wide * 2 >= aspectRatios.size
+    }
+
     /** 显示页总数：一页两开时是物理页数的两倍 */
     fun displayPageCount(sheetCount: Int, spread: Boolean): Int =
         if (spread) sheetCount * 2 else sheetCount

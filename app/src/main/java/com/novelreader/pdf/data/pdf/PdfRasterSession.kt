@@ -41,10 +41,14 @@ class PdfRasterSession(private val file: File) : Closeable {
             val r = PdfRenderer(pfd)
             descriptor = pfd
             renderer = r
-            // 用第一页的宽高比判定：竖版书页约 0.6，两页并排约 1.2
-            spread = runCatching {
-                r.openPage(0).use { SpreadLayout.isSpread(it.width, it.height) }
-            }.getOrDefault(false)
+            // 抽样若干页的宽高比，过半数是宽的就判为两开。
+            // 只看第一页会踩坑：Two Lives 的第 0 页是封面（单页），其余 34 页全是两开。
+            val sample = (0 until minOf(r.pageCount, SAMPLE_PAGES)).mapNotNull { idx ->
+                runCatching {
+                    r.openPage(idx).use { it.width.toFloat() / it.height.toFloat() }
+                }.getOrNull()
+            }
+            spread = SpreadLayout.decide(sample)
             pageCount = SpreadLayout.displayPageCount(r.pageCount, spread)
             pageCount
         }
@@ -111,6 +115,11 @@ class PdfRasterSession(private val file: File) : Closeable {
         runCatching { descriptor?.close() }
         renderer = null
         descriptor = null
+    }
+
+    private companion object {
+        /** 判定两开时抽样的页数：够躲开封面/版权页这类异常页，又不至于太慢 */
+        const val SAMPLE_PAGES = 8
     }
 
     private fun closeLocked() {

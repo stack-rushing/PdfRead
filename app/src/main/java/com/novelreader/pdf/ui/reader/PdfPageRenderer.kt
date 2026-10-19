@@ -28,6 +28,11 @@ class PdfPageRenderer(private val file: File) {
     private val mutex = Mutex()
 
     private var descriptor: ParcelFileDescriptor? = null
+
+    private companion object {
+        /** 判定两开时抽样的页数 */
+        const val SAMPLE_PAGES = 8
+    }
     private var renderer: PdfRenderer? = null
 
     /** 显示页数（一页两开时是物理页数的两倍）。阅读进度、目录页码全用这个编号 */
@@ -46,11 +51,13 @@ class PdfPageRenderer(private val file: File) {
             val newRenderer = PdfRenderer(pfd)
             descriptor = pfd
             renderer = newRenderer
-            spread = runCatching {
-                newRenderer.openPage(0).use {
-                    com.novelreader.pdf.data.pdf.SpreadLayout.isSpread(it.width, it.height)
-                }
-            }.getOrDefault(false)
+            // 抽样多页取多数：只看第一页会被封面骗过去
+            val sample = (0 until minOf(newRenderer.pageCount, SAMPLE_PAGES)).mapNotNull { idx ->
+                runCatching {
+                    newRenderer.openPage(idx).use { it.width.toFloat() / it.height.toFloat() }
+                }.getOrNull()
+            }
+            spread = com.novelreader.pdf.data.pdf.SpreadLayout.decide(sample)
             pageCount = com.novelreader.pdf.data.pdf.SpreadLayout.displayPageCount(
                 newRenderer.pageCount,
                 spread,
