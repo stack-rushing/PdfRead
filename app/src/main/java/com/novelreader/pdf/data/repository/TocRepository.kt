@@ -230,7 +230,12 @@ class TocRepository(
                         }
                     }
                 }
-                // 4) 连书签都没有（扫描件）→ 全页眉扫描
+                // 4) 没有书签：先读 **PDF 文字层**——有文字层的书又快又准，不受扫描质量影响
+                if (chapters.isEmpty()) {
+                    chapters = generator.scanByTextLayer(file, totalPages, progress)
+                    if (chapters.isNotEmpty()) source = TocSource.TEXT_LAYER
+                }
+                // 5) 文字层不可用（纯扫描件）→ 全页眉扫描
                 if (chapters.isEmpty()) {
                     chapters = generator.scanByOcr(file, totalPages, progress)
                     source = TocSource.OCR
